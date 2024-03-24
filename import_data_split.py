@@ -43,6 +43,7 @@ def load_image_select_channel(tif_image_name,kelp_image_name):
         kelp_image_path = os.path.join("./data/train_kelp/",kelp_image_name)
         
         tif_img = imread(tif_image_path)
+        # Select channel 1 (Near infrared cuz it shows the most kelp)
         tif_RGB_img = tif_img[:, :, 1:2]
         
         kelp_img = cv2.imread(kelp_image_path, cv2.IMREAD_GRAYSCALE)
