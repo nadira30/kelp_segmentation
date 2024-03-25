@@ -116,6 +116,7 @@ def test_model(model, dataloader, loss_fn):
             targets = targets.to(device)
 
             pred = model(images)
+            pred = pred.squeeze()
             loss = loss_fn(pred, targets)
             test_loss += loss.item()
 
