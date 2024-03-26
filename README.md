@@ -5,6 +5,9 @@ Computer Vision Class project: https://www.drivendata.org/competitions/255/kelp-
 
 A kelp forest is an ocean community made up of dense groupings of kelps. These forests typically serve as a source of food, shelter, and protection to a wide variety of marine life [1]. Additionally, kelp forests are extremely beneficial to humans as they are estimated to absorb a large amount of carbin dioxide, serve as a shelter for commercially important fishes, prevent coastal erosion and much more [2]. However, these forests face many threats such as climate change, overfishing, and unsustainable harvesting practices [1]. Thus, to preserve and protect kelp forests we propose the development of a model that can map and monitor them in coastal satellite images.
 
+
+![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/965b146e-3d3b-4394-955c-e50391a7ab1c)
+
 Bla bla bla 
 
 ### Related Works: Describe related works in your problem space (research papers,libraries/tools, etc) for existing solutions for this problem or adjacent areas. Make sure to cite papers you reference! Note: Related work should have between 2 to 6 sentences for each work citing. Please cite works following IEEE guidelines. Organize related work into different subsections based on similarity of approaches.
@@ -20,3 +23,8 @@ for comprehensive global monitoring.
 ### What’s next: What is your plan until the final project due date? What methods and experiments do you plan on running? Note: Include a task list (can use a table) indicating each step you are planning and anticipated completion date.
 
 ### Team member contributions: Indicate what you anticipate each team member will contribute by the final project submission. Note: List every member name and their corresponding tasks in bullet points – or you may simply assign team member names to the task list you created above.
+
+### References
+[1] Kelp Forest. Kelp Forest | NOAA Office of National Marine Sanctuaries. (n.d.). https://sanctuaries.noaa.gov/visit/ecosystems/kelpdesc.html 
+[2] Browning, J., & Lyons, G. (2020, May 27). 5 reasons to protect kelp, the West Coast’s powerhouse Marine Algae. The Pew Charitable Trusts. https://www.pewtrusts.org/en/research-and-analysis/articles/2020/05/27/5-reasons-to-protect-kelp-the-west-coasts-powerhouse-marine-algae#:~:text=3.-,Protect%20the%20shoreline,filter%20pollutants%20from%20the%20water. 
+
