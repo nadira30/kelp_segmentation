@@ -7,12 +7,17 @@ the problem itself and the motivation behind tackling it.
 ○ Note: Please include 1-3 paragraphs for this section. Diagrams, visuals, and/or
 showing example data can be highly effective to aid in telling your story.
 
-Related Works: Describe related works in your problem space (research papers,
-libraries/tools, etc) for existing solutions for this problem or adjacent areas. Make sure to
-cite papers you reference!
+A kelp forest is an ocean community made up of dense groupings of kelps. These forests typically serve as a source of food, shelter, and protection to a wide variety of marine life [1]. Additionally, kelp forests are extremely beneficial to humans as they are estimated to absorb a large amount of carbin dioxide, serve as a shelter for commercially important fishes, prevent coastal erosion and much more [2]. However, these forests face many threats such as climate change, overfishing, and unsustainable harvesting practices [1]. Thus, to preserve and protect kelp forests we propose the development of a model that can map and monitor them in coastal satellite images.
+
+Bla bla bla 
+
+Related Works: Describe related works in your problem space (research papers,libraries/tools, etc) for existing solutions for this problem or adjacent areas. Make sure to cite papers you reference!
 ○ Note: Related work should have between 2 to 6 sentences for each work citing.
-Please cite works following IEEE guidelines. Organize related work into different
-subsections based on similarity of approaches.
+Please cite works following IEEE guidelines. Organize related work into different subsections based on similarity of approaches.
+
+Bla bla bla
+Existing methods, like citizen science classification, are labor-intensive and slow, requiring a more efficient approach 
+for comprehensive global monitoring. 
 
 Methods/Approach: Indicate algorithms, methodologies, or approaches you used to
 craft your solution. What was the reasoning or intuition for trying each
