@@ -1,13 +1,22 @@
 # Kelp Segmentation: Mapping and Monitoring of Kelp Forests
 Computer Vision Class project: https://www.drivendata.org/competitions/255/kelp-forest-segmentation/data/
 
-### Introduction/Problem Definition: Provide a brief introduction to your project topic, and describe why it's an interesting topic to investigate. This is where you want to describe the problem itself and the motivation behind tackling it. Note: Please include 1-3 paragraphs for this section. Diagrams, visuals, and/or showing example data can be highly effective to aid in telling your story.
+### Introduction/Problem Definition:
 
-A kelp forest is an ocean community made up of dense groupings of kelps. These forests typically serve as a source of food, shelter, and protection to a wide variety of marine life [1]. Additionally, kelp forests are extremely beneficial to humans as they are estimated to absorb a large amount of carbin dioxide, serve as a shelter for commercially important fishes, prevent coastal erosion and much more [2]. However, these forests face many threats such as climate change, overfishing, and unsustainable harvesting practices [1]. Thus, to preserve and protect kelp forests we propose the development of a model that can map and monitor them in coastal satellite images.
+A kelp forest is an ocean community made up of dense groupings of kelps. These forests typically serve as a source of food, shelter, and protection to a wide variety of marine life [1]. Moreover, the significance of kelp forests extends beyond their role as a biodiverse hotspot. They play a pivotal role in regulating marine environments and supporting human well-being. Kelps are renowned for their capacity to sequester carbon dioxide through photosynthesis, contributing significantly to carbon capture from human's daily life and carbon storage in the oceans [2]. Additionally, these underwater havens act as natural buffers against coastal erosion, mitigating the impacts of waves and currents on shorelines. Furthermore, kelp forests hold economic value, serving as crucial fishing grounds and tourist attractions in many coastal regions.
+
+However, these forests face threats from multitude of factors such as climate change, acidification, overfishing, and unsustainable harvesting practices [1]. 
+
+To address these pressing conservation concerns and safeguard the future of kelp forests, innovative approaches are needed. One promising strategy involves harnessing the power of technology to monitor and protect these vital marine habitats. By leveraging advances in remote sensing, computer vision, and machine learning, we propose the development of a comprehensive model capable of monitoring kelp forests using coastal satellite imagery. Such a model would enable tracking of changes in kelp abundance, empowering conservation efforts and informing sustainable management practices.
 
 | ![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/965b146e-3d3b-4394-955c-e50391a7ab1c) | 
 |:--:| 
 | Image Showing Sardines Seeking Food and Shelter in a Kelp Forest [2] |
+
+
+![kelpswir_oli_2019](https://github.com/nadira30/kelp_segmentation/assets/128086407/7d7aa4ab-a17f-45c3-815f-8f9814d8d7c5)
+|:--:| 
+| Image Showing the change in Kelp forest abundance from 2008 to 2019 |
 
 ### Related Works: Describe related works in your problem space (research papers,libraries/tools, etc) for existing solutions for this problem or adjacent areas. Make sure to cite papers you reference! Note: Related work should have between 2 to 6 sentences for each work citing. Please cite works following IEEE guidelines. Organize related work into different subsections based on similarity of approaches.
 
