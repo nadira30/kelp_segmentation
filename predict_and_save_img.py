@@ -37,7 +37,7 @@ def normalize_img(img, type):
 
 def load_image_select_channel(test_image_name): 
     try:
-        test_image_path = os.path.join("./data/test_satellite/",test_image_name)
+        test_image_path = os.path.join("./train_val_test_data/test_images/",test_image_name)
         
         tif_img = imread(test_image_path)
         tif_img_slc = tif_img[:, :, 1:2]
@@ -55,8 +55,9 @@ model = tf.keras.models.load_model('CNN_model_v1.h5')
 model.load_weights('CNN_model_weights_v1.h5')
 
 # Assuming 'test_images' is a list of paths to test set images
-metadata = pd.read_csv("./data/metadata.csv")
-test_images = metadata[metadata['dataset'] == 'test_img']['filename'].values
+#metadata = pd.read_csv("./data/metadata_new.csv")
+#test_images = metadata[metadata['dataset'] == 'test_img']['filename'].values
+test_images = sorted(os.listdir("./train_val_test_data/test_images/"))
 
 # Create results folder if it doesn't exist
 if not os.path.exists('results'):

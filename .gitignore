@@ -1,5 +1,11 @@
 # Ignore files within these folders
-data/*
+data/archived_data/*
+data/train_kelp/*
+data/train_satellite/*
 preprocessed_data/*
 submission_1/*
 preprocessed_data_that_works/*
+archived/preprocessed_data_that_works/*
+archived/submission_1/*
+train_val_test_data/*
+results/*

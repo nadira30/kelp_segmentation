@@ -113,9 +113,9 @@ def show_both_overlay(tif_image_path,kelp_image_path): # For kelp images
     try:
         # Open the kelp image
         tif_img = imread(tif_image_path)
-        #tif_RGB_img = tif_img[:, :, 1]
+        tif_RGB_img = tif_img[:, :, 1]
         
-        
+        """
         #------------experimental--------------------------
         #tif_RGB_img = tif_img[:, :, 1]-tif_img[:, :, 0]
         # Normalize the image array
@@ -146,7 +146,7 @@ def show_both_overlay(tif_image_path,kelp_image_path): # For kelp images
         
         
         #------------experimental--------------------------
-        
+        """
         
         kelp_img = cv2.imread(kelp_image_path, cv2.IMREAD_GRAYSCALE)
         #kelp_RGB_img = cv2.cvtColor(kelp_img, cv2.COLOR_GRAY2RGB)
@@ -193,11 +193,16 @@ def show_both_overlay(tif_image_path,kelp_image_path): # For kelp images
 #kelp_image_path = "C:/Users/thana/Desktop/MSRobo_Work/4_spring2024/CS6476_CV/kelp_segmentation/data/train_kelp/RZ775960_kelp.tif"
 
 #Show test results
-tif_image_path = "C:/Users/thana/Desktop/MSRobo_Work/4_spring2024/CS6476_CV/kelp_segmentation/data/test_satellite/FY319821_satellite.tif"
-kelp_image_path = "C:/Users/thana/Desktop/MSRobo_Work/4_spring2024/CS6476_CV/kelp_segmentation/results/FY319821_kelp.tif"
+tif_image_path = "C:/Users/thana/Desktop/MSRobo_Work/4_spring2024/CS6476_CV/kelp_segmentation/train_val_test_data/test_images/AA498489_satellite.tif"
+kelp_image_path = "C:/Users/thana/Desktop/MSRobo_Work/4_spring2024/CS6476_CV/kelp_segmentation/train_val_test_data/test_labels/AA498489_kelp.tif"
+
+kelp_image_path_1 = "C:/Users/thana/Desktop/MSRobo_Work/4_spring2024/CS6476_CV/kelp_segmentation/train_val_test_data/test_labels/CL954551_kelp.tif"
+kelp_image_path_2 = "C:/Users/thana/Desktop/MSRobo_Work/4_spring2024/CS6476_CV/kelp_segmentation/results/CL954551_kelp.tif"
 
 #show_tif_image(tif_image_path)
 #show_kelp_image(kelp_image_path)
 #show_7_ch_tif_image(tif_image_path)
-show_both_overlay(tif_image_path,kelp_image_path)
+#show_both_overlay(tif_image_path,kelp_image_path)
+show_kelp_image(kelp_image_path_1)
+show_kelp_image(kelp_image_path_2)
 

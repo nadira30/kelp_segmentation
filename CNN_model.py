@@ -20,6 +20,8 @@ full_val_images = np.load(os.path.join(preprocessed_data_dir, "full_val_images.n
 full_val_labels = np.load(os.path.join(preprocessed_data_dir, "full_val_labels.npy"))
 
 print("------------full val labels unique number check-------------",  np.unique(full_val_labels))
+#full_train_images = full_train_images.reshape(-1, 3943, 350, 350)
+#full_val_images = full_val_images.reshape(-1, 3943, 350, 350)
 
 # resize it from (xxxx,350,350,1) to (xxxx,348,348,1)
 #full_train_labels_resized = full_train_labels[:, 1:-1, 1:-1, :]
@@ -52,9 +54,9 @@ for i, img in enumerate(full_val_labels):
 #image_height = full_train_images.shape[1]
 #image_width = full_train_images.shape[2]
 #num_channels = full_train_images.shape[3]
-image_height = full_train_images.shape[0]
-image_width = full_train_images.shape[1]
-num_channels = full_train_images.shape[2]
+image_height = full_train_images.shape[1]
+image_width = full_train_images.shape[2]
+num_channels = full_train_images.shape[3]
 
 
 model = Sequential([
@@ -72,16 +74,17 @@ model = Sequential([
 print(model.summary())
 
 # Compile
-model.compile(optimizer='adam', loss='binary_crossentropy')
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # Train
 history = model.fit(full_train_images, full_train_labels_resized, epochs=10, batch_size=32, validation_data=(full_val_images, full_val_labels_resized))
 
 # Evaluate the model
-#loss, accuracy = model.evaluate(full_val_images, full_val_labels_resized)
-#print(f'Validation Loss: {loss}, Validation Accuracy: {accuracy}')
+loss, accuracy = model.evaluate(full_val_images, full_val_labels_resized)
+print(f'Validation Loss: {loss}, Validation Accuracy: {accuracy}')
 
-model.save('CNN_model_v1.h5')
-model.save_weights('CNN_model_weights_v1.h5')
+model.save('CNN_model_v4.h5')
+model.save_weights('CNN_model_weights_v4.h5')
 
 
