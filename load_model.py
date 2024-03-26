@@ -42,34 +42,14 @@ class CustomImageDataset(Dataset):
         # get the label
         label_path = os.path.join(self.img_labels, os.listdir(self.img_labels)[idx])
         label = imread(label_path)
-        label = torch.tensor(label)
+        label = np.array(label)
+        # print('label shape:', label.shape)
+
+        label = torch.tensor(label)/255.0
         label = label.float()
-
-
-        # # get the NDVI (Normalized Difference Vegetation Index)
-        # """
-        # 1. SWIR (Shortwave Infrared)
-        # 2. NIR (Near-Infrared)
-        # 3. Red
-        # 4. Green
-        # 5. Blue
-        # 6. Cloud Mask
-        # 7. Digital Elevation Model
-        # """
-        # Red = img_array[:, :, 2]
-        # NIR = img_array[:, :, 1]
-        # temp1 = Red - NIR
-        # temp2 = Red + NIR
-        # NDVI = temp1 / temp2
-        # if np.mean(NDVI) > 0.5:
-        #     label = 1
-        # else:
-        #     label = 0
-        #
-        # label = float(label)
-        # # print('label:', label)
-        # # print('image:', image.shape)
-
+        # label = label.flatten()
+        print('label:', label.shape)
+        # image 3*350*350 ; label: 350*350
         return image.float(), label
 
 
@@ -91,14 +71,15 @@ def train_model(model, dataloader, loss_fn, optimizer):
     epoch_loss = 0.
 
     for batch, (images, targets) in enumerate(dataloader):
-        # print(targets.shape)
+
+        print("targets", targets.shape, images.shape)  #---> [350,350]
 
         images = images.to(device)
         targets = targets.to(device)
         optimizer.zero_grad()
-        output = model(images)
-        output = output.squeeze()
-        # print(output.shape)
+        output = model(images) #---> [2, 350, 350]
+        output = output.reshape(-1, 350, 350)
+        print("output", output.shape)
         batch_loss = loss_fn(output.float(), targets.float())
         batch_loss.backward()
         optimizer.step()
@@ -138,9 +119,11 @@ test_data = CustomImageDataset('/Users/nadira/gatech/Sp24/CV/kelp_segmentation/d
 train_data_len = len(train_data)
 test_data_len = len(test_data)
 
-train_dataloader = DataLoader(train_data, batch_size=27)
-test_dataloader = DataLoader(test_data, batch_size=27)
+train_dataloader = DataLoader(train_data)
+test_dataloader = DataLoader(test_data)
 epochs = 15
+
+# print("cnn archi", cnn_architecture())
 
 for t in range(n_epochs):
     print(f"Epoch {t + 1}\n-------------------------------")
@@ -159,3 +142,27 @@ plt.show()
 # Save model
 save_path = 'first_model.pth'
 torch.save(model.state_dict(), save_path)
+
+# # get the NDVI (Normalized Difference Vegetation Index)
+# """
+# 1. SWIR (Shortwave Infrared)
+# 2. NIR (Near-Infrared)
+# 3. Red
+# 4. Green
+# 5. Blue
+# 6. Cloud Mask
+# 7. Digital Elevation Model
+# """
+# Red = img_array[:, :, 2]
+# NIR = img_array[:, :, 1]
+# temp1 = Red - NIR
+# temp2 = Red + NIR
+# NDVI = temp1 / temp2
+# if np.mean(NDVI) > 0.5:
+#     label = 1
+# else:
+#     label = 0
+#
+# label = float(label)
+# # print('label:', label)
+# # print('image:', image.shape)

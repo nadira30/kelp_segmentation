@@ -12,7 +12,7 @@ class cnn_architecture(nn.Module):
 
         self.fc1 = nn.Linear(64*37*37, 128)  # (64*30*30, 128) for 300x300 images
         self.fc2 = nn.Linear(128, 128)
-        self.fc3 = nn.Linear(128, 1)
+        self.fc3 = nn.Linear(128, 2*350*350)
         self.relu = nn.ReLU()
 
     def forward(self, x):               #350x350
