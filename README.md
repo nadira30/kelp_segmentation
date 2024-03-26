@@ -26,7 +26,23 @@ for comprehensive global monitoring.
 
 ### Methods/Approach: Indicate algorithms, methodologies, or approaches you used to craft your solution. What was the reasoning or intuition for trying each methodology/algorithm. What does the overall pipeline look like and the details behindeach component? Make sure to establish any terminology or notation you will continue touse in this section. Note: Your methods and approaches may change through development, so in your project update, feel free to discuss all approaches you tried out! We expect at least 1 method/approach attempted.
 
+Method 1: Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
+- Upon inspecting the plots of multiple channel separately, as shown in the image below, we can see that the NIR shows the clearest pattern of the kelp canopies. Therefore, we decided to try using the image of this channel to train, validate, and test our CNN model. 
+
 ### Experiments / Results: Describe what you tried and what datasets were used. We aren’t expecting you to beat state of the art, but we are interested in you describing what worked or didn’t work and to give reasoning as to why you believe so. Compare your approach against baselines (either previously established or you established) in this section. Provide at least one qualitative result (i.e. a visual output of your system on an example image). Note: For the project update, feel free to discuss what worked and didn’t work. Why do you think an approach was (un)successful? We expect you to have dealt with dataset setup and completed at least 1 experimental result by the project update.
+
+Method1:  Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
+- The dataset was splitted into train-val-test ratio of 70-15-15. The CNN's architecture comprises:
+    - Conv2D (32 filters, kernel size (3,3), ReLU activation)
+    - MaxPooling2D (2x2)
+    - Conv2D (64 filters, kernel size (3,3), ReLU activation)
+    - MaxPooling2D (2x2)
+    - Conv2D (128 filters, kernel size (3,3), ReLU activation)
+    - UpSampling2D (2x2)
+    - Conv2D (64 filters, kernel size (3,3), ReLU activation)
+    - UpSampling2D (2x2)
+    - Conv2D (1 filter, kernel size (3,3), sigmoid activation)
+- The visual results and quantitative results are shown in the image below:
 
 ### What’s next: What is your plan until the final project due date? What methods and experiments do you plan on running? Note: Include a task list (can use a table) indicating each step you are planning and anticipated completion date.
 
