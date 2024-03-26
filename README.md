@@ -1,4 +1,4 @@
-# kelp_segmentation
+# Kelp Segmentation: Mapping and Monitoring of Kelp Forests
 Computer Vision Class project: https://www.drivendata.org/competitions/255/kelp-forest-segmentation/data/
 
 ### Introduction/Problem Definition: Provide a brief introduction to your project topic, and describe why it's an interesting topic to investigate. This is where you want to describe the problem itself and the motivation behind tackling it. Note: Please include 1-3 paragraphs for this section. Diagrams, visuals, and/or showing example data can be highly effective to aid in telling your story.
@@ -7,8 +7,7 @@ A kelp forest is an ocean community made up of dense groupings of kelps. These f
 
 
 ![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/965b146e-3d3b-4394-955c-e50391a7ab1c)
-
-Bla bla bla 
+*Image Showing Sardines Seeking Food and Shelter in a Kelp Forest  [2]*
 
 ### Related Works: Describe related works in your problem space (research papers,libraries/tools, etc) for existing solutions for this problem or adjacent areas. Make sure to cite papers you reference! Note: Related work should have between 2 to 6 sentences for each work citing. Please cite works following IEEE guidelines. Organize related work into different subsections based on similarity of approaches.
 
