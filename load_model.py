@@ -16,11 +16,11 @@ from cnn_class import cnn_architecture
 
 
 class CustomImageDataset(Dataset):
-    def __init__(self, img_dir, transform=None, target_transform=None):
-        self.img_labels = None
+    def __init__(self, img_dir, label_dir, transform=None, target_transform=None):
+        self.img_labels = label_dir
         self.img_dir = img_dir
-        self.transform = transform
-        self.target_transform = target_transform
+        # self.transform = transform
+        # self.target_transform = target_transform
 
     def __len__(self):
         lst = os.listdir(self.img_dir)
@@ -40,32 +40,37 @@ class CustomImageDataset(Dataset):
         image = torch.tensor(rgb_img) / 255.0
 
         # get the label
-        # get the NDVI (Normalized Difference Vegetation Index)
-        """
-        1. SWIR (Shortwave Infrared)
-        2. NIR (Near-Infrared)
-        3. Red
-        4. Green
-        5. Blue
-        6. Cloud Mask
-        7. Digital Elevation Model
-        """
-        Red = img_array[:, :, 2]
-        NIR = img_array[:, :, 1]
-        temp1 = Red - NIR
-        temp2 = Red + NIR
-        NDVI = temp1 / temp2
-        if np.mean(NDVI) > 0.5:
-            label = 1
-        else:
-            label = 0
+        label_path = os.path.join(self.img_labels, os.listdir(self.img_labels)[idx])
+        label = imread(label_path)
+        label = torch.tensor(label)
+        label = label.float()
 
-        label = float(label)
-        # print('label:', label)
-        # print('image:', image.shape)
+
+        # # get the NDVI (Normalized Difference Vegetation Index)
+        # """
+        # 1. SWIR (Shortwave Infrared)
+        # 2. NIR (Near-Infrared)
+        # 3. Red
+        # 4. Green
+        # 5. Blue
+        # 6. Cloud Mask
+        # 7. Digital Elevation Model
+        # """
+        # Red = img_array[:, :, 2]
+        # NIR = img_array[:, :, 1]
+        # temp1 = Red - NIR
+        # temp2 = Red + NIR
+        # NDVI = temp1 / temp2
+        # if np.mean(NDVI) > 0.5:
+        #     label = 1
+        # else:
+        #     label = 0
+        #
+        # label = float(label)
+        # # print('label:', label)
+        # # print('image:', image.shape)
 
         return image.float(), label
-
 
 
 device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -126,13 +131,13 @@ def test_model(model, dataloader, loss_fn):
 
 
 # Load the datset (split into train and test)
-collected_data = CustomImageDataset(img_dir='/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/train_satellite')
-# Start training
-train_data_len = len(collected_data)
-train_data_size = floor(train_data_len * 0.9)
-test_data_size = round(train_data_len * 0.1)
+train_data = CustomImageDataset('/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/train_val_test_data/train_images', '/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/train_val_test_data/train_labels')
+test_data = CustomImageDataset('/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/train_val_test_data/test_images', '/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/train_val_test_data/test_labels')
 
-train_data, test_data = random_split(collected_data, [train_data_size, test_data_size])
+# Start training
+train_data_len = len(train_data)
+test_data_len = len(test_data)
+
 train_dataloader = DataLoader(train_data, batch_size=27)
 test_dataloader = DataLoader(test_data, batch_size=27)
 epochs = 15
