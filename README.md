@@ -33,6 +33,7 @@ To address these pressing conservation concerns and safeguard the future of kelp
 
 #### [4] Mapping bull kelp canopy in northern California using Landsat to enable long-term monitoring
 - This paper is focused on the mapping and monitoring of kelp, specifically bull kelp, though the use of Landsat satellite images.
+- Compared to aerial imagery and private satellite images that have been employed by other researchers, Landsat images allow for long-term montioring since they are updated by the U.S. Geological Survey (USGS) every 16 days.
 
 ### Methods/Approach: Indicate algorithms, methodologies, or approaches you used to craft your solution. What was the reasoning or intuition for trying each methodology/algorithm. What does the overall pipeline look like and the details behindeach component? Make sure to establish any terminology or notation you will continue touse in this section. Note: Your methods and approaches may change through development, so in your project update, feel free to discuss all approaches you tried out! We expect at least 1 method/approach attempted.
 
