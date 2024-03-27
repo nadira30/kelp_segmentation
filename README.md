@@ -148,12 +148,12 @@ As can be observed by the images and metrics above, method 2 does not perform as
 
 
 ### Team member contributions: 
-Nadira:
+Nadira Amadou:
 - Formatting dataset 
 - Develop a custom CNN architecture
 - Training and testing method 3
 
-Tofunmi:
+Oluwatofunmi Sodimu:
 - Formatting Dataset 
 - Develop a UNET CNN architecture
 - Training and testing method 2
