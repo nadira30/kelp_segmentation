@@ -17,7 +17,7 @@ To address these pressing conservation concerns and safeguard the future of kelp
 |:--:| 
 | *Image Showing the change in Kelp forest abundance from 2008 to 2019* |
 
-### Related Works: Describe related works in your problem space (research papers,libraries/tools, etc) for existing solutions for this problem or adjacent areas. Make sure to cite papers you reference! Note: Related work should have between 2 to 6 sentences for each work citing. Please cite works following IEEE guidelines. Organize related work into different subsections based on similarity of approaches.
+### Related Works: 
 
 #### [3] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas):
 - The paper evaluates two methods to automate kelp detection from satellite imagery: 1) crowdsourced classifications from the Floating Forests citizen science project (FF8), and 2) an automated spectral approach using a decision tree combined with multiple endmember spectral mixture analysis (DTM).
