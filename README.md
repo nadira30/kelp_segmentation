@@ -11,12 +11,11 @@ To address these pressing conservation concerns and safeguard the future of kelp
 
 | ![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/965b146e-3d3b-4394-955c-e50391a7ab1c) | 
 |:--:| 
-| Image Showing Sardines Seeking Food and Shelter in a Kelp Forest [2] |
-
+| *Image Showing Sardines Seeking Food and Shelter in a Kelp Forest [2]*|
 
 ![kelpswir_oli_2019](https://github.com/nadira30/kelp_segmentation/assets/128086407/7d7aa4ab-a17f-45c3-815f-8f9814d8d7c5)
 |:--:| 
-| Image Showing the change in Kelp forest abundance from 2008 to 2019 |
+| *Image Showing the change in Kelp forest abundance from 2008 to 2019* |
 
 ### Related Works: Describe related works in your problem space (research papers,libraries/tools, etc) for existing solutions for this problem or adjacent areas. Make sure to cite papers you reference! Note: Related work should have between 2 to 6 sentences for each work citing. Please cite works following IEEE guidelines. Organize related work into different subsections based on similarity of approaches.
 
