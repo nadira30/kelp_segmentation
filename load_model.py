@@ -60,46 +60,40 @@ optimizer = torch.optim.SGD(model.parameters(), lr=1e-3, momentum=0.9)
 # Perform training loop for n epochs
 loss_list = []
 n_epochs = 10
-loss_fn = nn.BCEWithLogitsLoss()
+loss_fn = nn.BCELoss()
 
 
 def train_model(model, dataloader, loss_fn, optimizer):
     size = len(dataloader.dataset)
     model.train()
-    epoch_accuracy = 0.
+    epoch_loss = 0.
     total_correct = 0
     total_samples = 0
-    loss = 0
-    running_loss = 0.0
-    for i, data in enumerate(dataloader, 0):
-        # Get the inputs
-        inputs, labels = data[0].to(device), data[1].to(device)
-        labels = labels.squeeze(0)
-        # Zero the parameter gradients
+    for batch, (images, targets) in enumerate(dataloader):
+        # print(targets.shape)
+
+        images = images.to(device)
+        targets = targets.to(device)
+        targets = targets.squeeze(0)
+
         optimizer.zero_grad()
-
-        # Forward pass
-        outputs = model(inputs)
-        outputs = outputs.reshape(-1, 350, 350)
-        predicted = torch.max(outputs, 0)[1]
-
-        loss = loss_fn(predicted.float(), labels.float())
-
-        # Backward pass and optimize
+        output = model(images)
+        output = output.reshape(-1, 350, 350)
+        _, predicted = torch.max(output.data, 0)
+        # print(output.shape)
+        batch_loss = loss_fn(predicted.float(), targets.float())
         optimizer.step()
 
-        # Print statistics
-        running_loss += loss.item()
+        total_samples += targets.size(0)
+        total_correct += (predicted == targets).sum().item()
 
-        if i % 10 == 0:
-            loss = running_loss / 10
-            running_loss = 0.0
+    batch_loss, sample_count = batch_loss.item(), (batch + 1) * len(images)
+    epoch_loss = (epoch_loss * batch + batch_loss) / (batch + 1)
+    print(f"loss: {batch_loss:>7f} [{sample_count:>5d}/{size:>5d}]")
+    accuracy = 100 * total_correct / total_samples
 
-        total_samples += labels.size(0)
-        total_correct += (predicted == labels).sum().item()
-        epoch_accuracy = 100 * total_correct // total_samples
 
-    return loss, epoch_accuracy
+    return epoch_loss, accuracy
 
 
 
@@ -119,7 +113,7 @@ def test_model(model, dataloader, loss_fn):
             pred = model(images)
             pred = pred.reshape(-1, 350, 350)
             # get the output with the highest accuracy
-            predicted = torch.max(pred, 0)[1]
+            _, predicted = torch.max(pred.data, 0)
             # determine the loss
             loss = loss_fn(targets.float(), predicted.float())
             test_loss += loss.item()
@@ -156,14 +150,14 @@ train_loss = []
 
 for t in range(n_epochs):
     print(f"Epoch {t + 1}\n-------------------------------")
-    train_l, train_accuracy = train_model(model, train_dataloader, loss_fn, optimizer)
+    train_l, accuracy = train_model(model, train_dataloader, loss_fn, optimizer)
     test_l, test_accuracy = test_model(model, test_dataloader, loss_fn)
     test_loss.append(test_l)
     train_loss.append(train_l)
 
     print(f"\nTest Error: \n----------\n{test_l:.6f}")
     print(f"\nTrain Error: \n----------\n{train_l:.6f}")
-    print(f'Epoch {t + 1}: training Accuracy = {train_accuracy:.2f}%, test Accuracy = {test_accuracy:.2f}%')
+    print(f'Epoch {t + 1}: training Accuracy = {accuracy:.2f}%; test Accuracy = {test_accuracy:.2f}%')
 
 
 # create array for x values for plotting train
