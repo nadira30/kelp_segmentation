@@ -5,6 +5,7 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 import torchvision
+from sklearn.metrics import precision_recall_fscore_support
 from sklearn.preprocessing import minmax_scale
 
 from torch.utils.data import Dataset, random_split, DataLoader
@@ -122,12 +123,14 @@ def test_model(model, dataloader, loss_fn):
             # Update the running total of correct predictions and samples
             total_correct += (predicted == targets).sum().item()
             total_samples += targets.size(0)
+            # determine precision, recall, and F1 score
+            precision, recall, f1, _ = precision_recall_fscore_support(targets, predicted, average='macro')
 
         # Calculate the accuracy for this epoch
     accuracy = 100 * total_correct / total_samples
 
     test_loss /= num_batches
-    return test_loss, accuracy
+    return test_loss, accuracy, (precision, recall, f1)
 
 
 # Load the datset (split into train and test)
@@ -152,18 +155,22 @@ train_loss = []
 for t in range(n_epochs):
     print(f"Epoch {t + 1}\n-------------------------------")
     train_l, accuracy = train_model(model, train_dataloader, loss_fn, optimizer)
-    test_l, test_accuracy = test_model(model, test_dataloader, loss_fn)
+    test_l, test_accuracy, x = test_model(model, test_dataloader, loss_fn)
     test_loss.append(test_l)
     train_loss.append(train_l)
 
     print(f"\nTest Error: \n----------\n{test_l:.6f}")
     print(f"\nTrain Error: \n----------\n{train_l:.6f}")
     print(f'Epoch {t + 1}: training Accuracy = {accuracy:.2f}%; test Accuracy = {test_accuracy:.2f}%')
+    print(f'Precision: {x[0]:.2f}, Recall: {x[1]:.2f}, F1: {x[2]:.2f}')
+
+
+
 
 
 # create array for x values for plotting train
 epochs_array = list(range(epochs))
-title = 'Loss vs Epochs lr=1e-3'
+title = 'Loss 2 vs Epochs lr=1e-3'
 # Graph the test and train data
 fig = plt.figure()
 axs = fig.add_subplot(1,1,1)
@@ -176,7 +183,7 @@ axs.legend()
 fig.savefig(f'{title}.png')
 
 # Save model
-save_path = 'first_model.pth'
+save_path = 'second_model.pth'
 torch.save(model.state_dict(), save_path)
 
 # # get the NDVI (Normalized Difference Vegetation Index)
