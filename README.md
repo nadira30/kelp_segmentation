@@ -29,7 +29,7 @@ To address these pressing conservation concerns and safeguard the future of kelp
   
 ![results_remote_sensing](https://github.com/nadira30/kelp_segmentation/assets/128086407/bd4350ca-dd28-45f5-9a77-abd99fae646c)
 |:--:| 
-| Image Showing the results of automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas)|
+| Image Showing the results of automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) |
 
 #### [4] Mapping bull kelp canopy in northern California using Landsat to enable long-term monitoring
 - This paper is focused on the mapping and monitoring of kelp, specifically bull kelp, though the use of Landsat satellite images.
@@ -44,6 +44,10 @@ To address these pressing conservation concerns and safeguard the future of kelp
 
 #### Method 1: Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
 - Upon inspecting the plots of multiple channel separately, as shown in the image below, we can see that the NIR shows the clearest pattern of the kelp canopies. Therefore, we decided to try using the image of this channel to train, validate, and test our CNN model.
+
+![7channel](https://github.com/nadira30/kelp_segmentation/assets/128086407/18671950-b74d-4559-8287-25e96f84c3c4)
+|:--:| 
+| Image Showing 7 Channels of the satellite TIF image |
   
 #### Method 2: Utilizing the Normalized Difference Water Index (NDWI), Normalized Difference Vegetation Index (NDVI), and RGB channels with the U-Net Convolutional Neural Network Architecture.
 - The Normalized Difference Water Index (NDWI) is a parameter that may be used to differentiate between different types of vegetation. NDWI = (Near Infrared - Shortwave Infrared)/(Near Infrared + Shortwave Infrared) [6]. Typically, values between -1 and 0 indicate a lack of vegetation or water content, while values greater than 1 indicate the presence of water [6].
