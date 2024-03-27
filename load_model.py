@@ -5,6 +5,7 @@ import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
 import torchvision
+from sklearn.preprocessing import minmax_scale
 
 from torch.utils.data import Dataset, random_split, DataLoader
 import os
@@ -32,10 +33,12 @@ class CustomImageDataset(Dataset):
         image = imread(img_path)
         img_array = np.array(image)
         # get the rgb image
-        rgb_img, _ = np.split(img_array, [3], axis=2)
-        rgb_img = rgb_img.transpose(2, 0, 1)
-        # print('rgb_img shape:', rgb_img.shape)
-        image = torch.tensor(rgb_img) / np.max(rgb_img)
+        rgb_img_plot = img_array[:, :, 2:5]
+        # Scale RGB image for train_data
+        rgb_img_plot = minmax_scale(rgb_img_plot.ravel(), feature_range=(0, 255)).reshape(rgb_img_plot.shape)
+        rgb_img_plot = np.transpose(rgb_img_plot, (2, 0, 1))
+        # print('rgb_img shape:', rgb_img_plot.shape)
+        image = torch.tensor(rgb_img_plot) / 255.0
 
         # get the label
         label_path = os.path.join(self.img_labels, sorted(os.listdir(self.img_labels))[idx])
@@ -43,7 +46,7 @@ class CustomImageDataset(Dataset):
         label = np.array(label)
         # print('label shape:', label.shape)
 
-        label = torch.tensor(label)/np.max(label)
+        label = torch.tensor(label)
         label = label.float()
         # label = label.flatten()
         # print('label:', label.shape)
@@ -60,13 +63,13 @@ optimizer = torch.optim.SGD(model.parameters(), lr=1e-3, momentum=0.9)
 # Perform training loop for n epochs
 loss_list = []
 n_epochs = 10
-loss_fn = nn.BCELoss()
+loss_fn = nn.MSELoss()
 
 
 def train_model(model, dataloader, loss_fn, optimizer):
     size = len(dataloader.dataset)
     model.train()
-    epoch_loss = 0.
+    test_loss = 0.
     total_correct = 0
     total_samples = 0
     for batch, (images, targets) in enumerate(dataloader):
@@ -81,19 +84,17 @@ def train_model(model, dataloader, loss_fn, optimizer):
         output = output.reshape(-1, 350, 350)
         _, predicted = torch.max(output.data, 0)
         # print(output.shape)
-        batch_loss = loss_fn(predicted.float(), targets.float())
-        optimizer.step()
+        loss = loss_fn(targets.float(), predicted.float())
+        test_loss += loss.item()
 
         total_samples += targets.size(0)
         total_correct += (predicted == targets).sum().item()
 
-    batch_loss, sample_count = batch_loss.item(), (batch + 1) * len(images)
-    epoch_loss = (epoch_loss * batch + batch_loss) / (batch + 1)
-    print(f"loss: {batch_loss:>7f} [{sample_count:>5d}/{size:>5d}]")
     accuracy = 100 * total_correct / total_samples
+    test_loss /= len(dataloader)
 
 
-    return epoch_loss, accuracy
+    return test_loss, accuracy
 
 
 
@@ -142,8 +143,8 @@ train_data, test_data = random_split(collected_data, [train_size, test_size])
 train_data_len = len(train_data)
 test_data_len = len(test_data)
 
-train_dataloader = DataLoader(train_data)
-test_dataloader = DataLoader(test_data)
+train_dataloader = DataLoader(train_data,  shuffle=True)
+test_dataloader = DataLoader(test_data,  shuffle=True)
 epochs = 10
 test_loss = []
 train_loss = []
