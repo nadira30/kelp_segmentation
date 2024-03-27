@@ -55,18 +55,6 @@ To address these pressing conservation concerns and safeguard the future of kelp
 - Due to the utility of these parameters in detecting the presence of vegetation, they were used in combination with the RGB channels  to train a U-Net model that would be able to return a semantically segmented image with labels corresponding to kelp(1) or no kelp(0).
 - Additionally, the digital elevation map values and the cloud mask values were used to filter out irreleveant pixels prior to training.
 
-#### Method 3: Using the RGB channel with a modified Resnet Architecture. 
-- Unlike methods 1 and 2, the dataset was split into train-test rations 80-15.
-- The CNN architecture is detailed below.
-  *  Conv2d(3, 24, kernel_size=(5, 5), stride=(2, 2))
-  * Conv2d(24, 32, kernel_size=(5, 5), stride=(2, 2))
-  * Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2))
-  * Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
-  * Linear(in_features=87616, out_features=128, bias=True)
-  * Linear(in_features=128, out_features=128, bias=True)
-  * Linear(in_features=128, out_features=245000, bias=True)
-  * ReLU()
-    
 ### Experiments / Results: Describe what you tried and what datasets were used. We aren’t expecting you to beat state of the art, but we are interested in you describing what worked or didn’t work and to give reasoning as to why you believe so. Compare your approach against baselines (either previously established or you established) in this section. Provide at least one qualitative result (i.e. a visual output of your system on an example image). Note: For the project update, feel free to discuss what worked and didn’t work. Why do you think an approach was (un)successful? We expect you to have dealt with dataset setup and completed at least 1 experimental result by the project update.
 
 #### Method1:  Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
@@ -112,6 +100,19 @@ The visual results and quantitative results are shown in the image below:
 |:--:| 
 | Image Showing Results of Method 2 |
 
+#### Method 3: Using the RGB channel with a modified Resnet Architecture. 
+- Unlike methods 1 and 2, the dataset was split into train-test rations 80-15.
+- The CNN architecture is detailed below.
+  *  Conv2d(3, 24, kernel_size=(5, 5), stride=(2, 2))
+  * Conv2d(24, 32, kernel_size=(5, 5), stride=(2, 2))
+  * Conv2d(32, 64, kernel_size=(5, 5), stride=(2, 2))
+  * Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1))
+  * Linear(in_features=87616, out_features=128, bias=True)
+  * Linear(in_features=128, out_features=128, bias=True)
+  * Linear(in_features=128, out_features=245000, bias=True)
+  * ReLU()
+
+  
 ### What’s next: What is your plan until the final project due date? What methods and experiments do you plan on running? Note: Include a task list (can use a table) indicating each step you are planning and anticipated completion date.
 
 ### Team member contributions: Indicate what you anticipate each team member will contribute by the final project submission. Note: List every member name and their corresponding tasks in bullet points – or you may simply assign team member names to the task list you created above.
