@@ -66,6 +66,12 @@ Despite DRF allowing the comparison of kelp coverage in different sites, the pro
 - Due to the utility of these parameters in detecting the presence of vegetation, they were used in combination with the RGB channels to train a U-Net model that would be able to return a semantically segmented image with labels corresponding to kelp(1) or no kelp(0).
 - Additionally, the digital elevation map values and the cloud mask values were used to filter out irrelevant pixels prior to training. Kelp forests typically extend about 20-30cm above the ocean's surface [8], so pixels with an elevation value that is 30cm's above the ocean's surface were filtered out. Similarly, pixels with the presence of clouds were filtered out as well.
 
+#### Method 3: Using the RGB channel with a modified Resnet Architecture. 
+Using the RGB channels as inputs to the convolutional neural network. We can see on the initial RGB image that the kelp is barely noticeable. Therefore we decided to train and test to see how promising is the RGB channels alone to detect kelp. 
+![initial image](https://raw.githubusercontent.com/nadira30/kelp_segmentation/nadi_branch/inital.png)
+|:--:| 
+| Image Showing the 3 RGB channels of the satellite TIF image |
+
 ### Experiments / Results: 
 
 #### Method1:  Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
