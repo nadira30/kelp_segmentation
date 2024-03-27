@@ -70,6 +70,15 @@ To address these pressing conservation concerns and safeguard the future of kelp
     - Conv2D (1 filter, kernel size (3,3), sigmoid activation)
 - The visual results and quantitative results are shown in the image below:
 
+![NIR_CNN_results](https://github.com/nadira30/kelp_segmentation/assets/128086407/6ba504be-3bfd-45ac-89be-44b788f1d883)
+|:--:| 
+| Image Showing results of Method 1: NIR + CNN |
+
+![quant_results_1](https://github.com/nadira30/kelp_segmentation/assets/128086407/c51091cc-a953-4da2-864b-91f04377416f)
+|:--:| 
+| Image Showing quatitative metric results of Method 1: NIR + CNN |
+
+
 #### Method 2: Utilizing the Normalized Difference Water Index (NDWI), Normalized Difference Vegetation Index (NDVI), and RGB channels with the U-Net Convolutional Neural Network Architecture.
 - Similarly to method 1, the dataset was split into train-val-test ratios of 70-15-15.
 - The U-Net CNN architecture is as follows:
