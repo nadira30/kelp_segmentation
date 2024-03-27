@@ -42,8 +42,8 @@ for comprehensive global monitoring.
 - Upon inspecting the plots of multiple channel separately, as shown in the image below, we can see that the NIR shows the clearest pattern of the kelp canopies. Therefore, we decided to try using the image of this channel to train, validate, and test our CNN model.
   
 #### Method 2: Utilizing the Normalized Difference Water Index (NDWI), Normalized Difference Vegetation Index (NDVI), and RGB channels with the U-Net Convolutional Neural Network Architecture.
-- The Normalized Difference Water Index (NDWI) is a parameter that may be used to differentiate between different types of vegetation. NDWI = (Near Infrared - Shortwave Infrared)/(Near Infrared + Shortwave Infrared) [3]. Typically, values between -1 and 0 indicate a lack of vegetation or water content, while values greater than 1 indIcate the presence of water [3].
-- The Normalized Difference Vegetation Index (NDVI) is a parameter that may also be used to differentiate between different types of vegetation. NDVI = (Near Infrared  - Red)/(Near Infrared + Red) [4]. NDVI values typically fall within the range of -1 and +1 with the value increasing in proportion to the increase in vegetation [4]. An NDVI of 0 may indicate a lack of vegetation (e.g. buildings), an NDVI of -1 may indicate a large body of water, and an NDVI of +1 may indicate dense vegetation [4].
+- The Normalized Difference Water Index (NDWI) is a parameter that may be used to differentiate between different types of vegetation. NDWI = (Near Infrared - Shortwave Infrared)/(Near Infrared + Shortwave Infrared) [4]. Typically, values between -1 and 0 indicate a lack of vegetation or water content, while values greater than 1 indIcate the presence of water [4].
+- The Normalized Difference Vegetation Index (NDVI) is a parameter that may also be used to differentiate between different types of vegetation. NDVI = (Near Infrared  - Red)/(Near Infrared + Red) [5]. NDVI values typically fall within the range of -1 and +1 with the value increasing in proportion to the increase in vegetation [5]. An NDVI of 0 may indicate a lack of vegetation (e.g. buildings), an NDVI of -1 may indicate a large body of water, and an NDVI of +1 may indicate dense vegetation [5].
 - Due to the utility of these parameters in detecting the presence of vegetation, they were used in combination with the RGB channels  to train a U-Net model that would be able to return a semantically segmented image with labels corresponding to kelp(1) or no kelp(0).
 - Additionally, the digital elevation map values and the cloud mask values were used to filter out irreleveant pixels prior to training.
   
@@ -103,3 +103,7 @@ The visual results and quantitative results are shown in the image below:
 
 [3] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas)
 Houskeeper HF, Rosenthal IS, Cavanaugh KC, Pawlak C, Trouille L, et al. (2022) Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas). PLOS ONE 17(1): e0257933. https://doi.org/10.1371/journal.pone.0257933
+
+[4] Gao, B.-C., Hunt, E. R., Jackson, R. D., Lillesaeter, O., Tucker, C. J., Vane, G., Bowker, D. E., Bowman, W. D., Cibula, W. G., Deering, D., & Elvidge, C. D. (1999, February 22). Ndwi-a normalized difference water index for remote sensing of vegetation liquid water from space. Remote Sensing of Environment. https://www.sciencedirect.com/science/article/abs/pii/S0034425796000673 
+
+[5] GISGeography. (2024, March 10). What is NDVI (normalized difference vegetation index)?. GIS Geography. https://gisgeography.com/ndvi-normalized-difference-vegetation-index/ 
