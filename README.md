@@ -123,8 +123,20 @@ The visual results and quantitative results are shown in the image below:
 
   
 ### What’s next: What is your plan until the final project due date? What methods and experiments do you plan on running? Note: Include a task list (can use a table) indicating each step you are planning and anticipated completion date.
+- Tune and optimize the CNN model variations, architectures, and hyperparameters
+- Implement the other methods on data augmentation before training/testing the model
+
 
 ### Team member contributions: Indicate what you anticipate each team member will contribute by the final project submission. Note: List every member name and their corresponding tasks in bullet points – or you may simply assign team member names to the task list you created above.
+Nadira:
+
+Tofunmi:
+
+Thanapol Tantagunninat:
+- Formatting and splitting the common training/testing dataset
+- Develop the CNN architecture
+- Training and testing the method 1
+
 
 ### References
 [1] Kelp Forest. Kelp Forest | NOAA Office of National Marine Sanctuaries. (n.d.). https://sanctuaries.noaa.gov/visit/ecosystems/kelpdesc.html 
