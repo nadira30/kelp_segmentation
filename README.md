@@ -48,7 +48,7 @@ A binary classifier is trained for every node in the hierarchical tree of the gi
 Furthermore, color channel stretch was used on images to reduce the effect of the underwater color distortion phenomenon. For feature extraction, a pre-trained Resnet 50 was used, and the proposed method was implemented using MatConvNet and the SVM classifier.
 Despite DRF allowing the comparison of kelp coverage in different sites, the proposed method had the drawback of an over-prediction of kelp at high percentage cover and under-prediction at low coverage, even though the prediction was negligible in some sites. 
 
-### Methods/Approach: Indicate algorithms, methodologies, or approaches you used to craft your solution. What was the reasoning or intuition for trying each methodology/algorithm. What does the overall pipeline look like and the details behindeach component? Make sure to establish any terminology or notation you will continue touse in this section. Note: Your methods and approaches may change through development, so in your project update, feel free to discuss all approaches you tried out! We expect at least 1 method/approach attempted.
+### Methods/Approach: 
 
 #### Method 1: Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
 - Upon inspecting the plots of multiple channel separately, as shown in the image below, we can see that the NIR shows the clearest pattern of the kelp canopies. Therefore, we decided to try using the image of this channel to train, validate, and test our CNN model.
@@ -63,7 +63,7 @@ Despite DRF allowing the comparison of kelp coverage in different sites, the pro
 - Due to the utility of these parameters in detecting the presence of vegetation, they were used in combination with the RGB channels to train a U-Net model that would be able to return a semantically segmented image with labels corresponding to kelp(1) or no kelp(0).
 - Additionally, the digital elevation map values and the cloud mask values were used to filter out irrelevant pixels prior to training. Kelp forests typically extend about 20-30cm above the ocean's surface [8], so pixels with an elevation value that is 30cm's above the ocean's surface were filtered out. Similarly, pixels with the presence of clouds were filtered out as well.
 
-### Experiments / Results: Describe what you tried and what datasets were used. We aren’t expecting you to beat state of the art, but we are interested in you describing what worked or didn’t work and to give reasoning as to why you believe so. Compare your approach against baselines (either previously established or you established) in this section. Provide at least one qualitative result (i.e. a visual output of your system on an example image). Note: For the project update, feel free to discuss what worked and didn’t work. Why do you think an approach was (un)successful? We expect you to have dealt with dataset setup and completed at least 1 experimental result by the project update.
+### Experiments / Results: 
 
 #### Method1:  Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
 - The dataset was split into train-val-test ratio of 70-15-15. The CNN's architecture comprises:
@@ -134,7 +134,7 @@ As can be observed by the images and metrics above, method 2 does not perform as
   * ReLU()
 
   
-### What’s next: What is your plan until the final project due date? What methods and experiments do you plan on running? Note: Include a task list (can use a table) indicating each step you are planning and anticipated completion date.
+### What’s next: 
 
 |Task | Date|
 |-----|-----|
@@ -144,7 +144,7 @@ As can be observed by the images and metrics above, method 2 does not perform as
 |wrap up project and report| April 16th|
 
 
-### Team member contributions: Indicate what you anticipate each team member will contribute by the final project submission. Note: List every member name and their corresponding tasks in bullet points – or you may simply assign team member names to the task list you created above.
+### Team member contributions: 
 Nadira:
 - Formatting dataset 
 - Develop a custom CNN architecture
