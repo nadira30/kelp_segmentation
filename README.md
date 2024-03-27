@@ -20,11 +20,7 @@ To address these pressing conservation concerns and safeguard the future of kelp
 
 ### Related Works: Describe related works in your problem space (research papers,libraries/tools, etc) for existing solutions for this problem or adjacent areas. Make sure to cite papers you reference! Note: Related work should have between 2 to 6 sentences for each work citing. Please cite works following IEEE guidelines. Organize related work into different subsections based on similarity of approaches.
 
-Bla bla bla
-Existing methods, like citizen science classification, are labor-intensive and slow, requiring a more efficient approach 
-for comprehensive global monitoring. 
-
-[3] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas):
+#### [3] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas):
 - The paper evaluates two methods to automate kelp detection from satellite imagery: 1) crowdsourced classifications from the Floating Forests citizen science project (FF8), and 2) an automated spectral approach using a decision tree combined with multiple endmember spectral mixture analysis (DTM).
 - Both methods were applied to classify kelp from Landsat 5, 7, 8 imagery covering the Falkland Islands from 1985-2021.
 - DTM showed better performance than FF8 when validated against expert manual classifications of 8 Landsat scenes covering over 2,700 km of coastline.
@@ -35,7 +31,7 @@ for comprehensive global monitoring.
 |:--:| 
 | Image Showing the results of automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas)|
 
-[4] Mapping bull kelp canopy in northern California using Landsat to enable long-term monitoring
+#### [4] Mapping bull kelp canopy in northern California using Landsat to enable long-term monitoring
 - This paper is focused on the mapping and monitoring of kelp, specifically bull kelp, though the use of Landsat satellite images.
 
 ### Methods/Approach: Indicate algorithms, methodologies, or approaches you used to craft your solution. What was the reasoning or intuition for trying each methodology/algorithm. What does the overall pipeline look like and the details behindeach component? Make sure to establish any terminology or notation you will continue touse in this section. Note: Your methods and approaches may change through development, so in your project update, feel free to discuss all approaches you tried out! We expect at least 1 method/approach attempted.
