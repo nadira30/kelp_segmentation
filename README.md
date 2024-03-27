@@ -1,5 +1,8 @@
 # Kelp Segmentation: Mapping and Monitoring of Kelp Forests
-Computer Vision Class project: https://www.drivendata.org/competitions/255/kelp-forest-segmentation/data/
+### Team Member: 
+* Nadira Amadou
+* Oluwatofunmi Sodimu 
+* Thanapol Tantagunninat
 
 ### Introduction/Problem Definition:
 
