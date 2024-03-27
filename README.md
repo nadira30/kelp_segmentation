@@ -123,7 +123,7 @@ The visual results and quantitative results are shown in the images below:
 As can be observed by the images and metrics above, method 2 does not perform as well as method 1 and prior implementations [3-6]. This could hint at a need to further tune the parameters used in the model.
 
 #### Method 3: Using the RGB channel with a modified Resnet Architecture. 
-- Unlike methods 1 and 2, the dataset was split into train-test rations 80-15.
+- Unlike methods 1 and 2, the dataset was split into train-test rations 80-20.
 - The CNN architecture is detailed below.
   *  Conv2d(3, 24, kernel_size=(5, 5), stride=(2, 2))
   * Conv2d(24, 32, kernel_size=(5, 5), stride=(2, 2))
@@ -136,14 +136,25 @@ As can be observed by the images and metrics above, method 2 does not perform as
 
   
 ### What’s next: What is your plan until the final project due date? What methods and experiments do you plan on running? Note: Include a task list (can use a table) indicating each step you are planning and anticipated completion date.
-- Tune and optimize the CNN model variations, architectures, and hyperparameters
-- Implement the other methods on data augmentation before training/testing the model
+
+|Task | Date|
+|-----|-----|
+|Select the most promising CNN architecture, fine-tune| April 06th|
+|Use different combinations and variations of inputs before training and testing| April 10th|
+|Determine most applicable metrics| April 12th|
+|wrap up project and report| April 16th|
 
 
 ### Team member contributions: Indicate what you anticipate each team member will contribute by the final project submission. Note: List every member name and their corresponding tasks in bullet points – or you may simply assign team member names to the task list you created above.
 Nadira:
+- Formatting dataset 
+- Develop a custom CNN architecture
+- Training and testing method 3
 
 Tofunmi:
+- Formatting Dataset 
+- Develop a UNET CNN architecture
+- Training and testing method 2
 
 Thanapol Tantagunninat:
 - Formatting and splitting the common training/testing dataset
