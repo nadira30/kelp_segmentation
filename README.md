@@ -33,8 +33,12 @@ To address these pressing conservation concerns and safeguard the future of kelp
 
 #### [4] Mapping bull kelp canopy in northern California using Landsat to enable long-term monitoring
 - This paper is focused on the mapping and monitoring of kelp, specifically bull kelp, though the use of Landsat satellite images.
-- Compared to aerial imagery and private satellite images that have been employed by other researchers, Landsat images allow for long-term montioring since they are updated by the U.S. Geological Survey (USGS) every 16 days.
 - Similar to our previous reference, MESMA was used to predict the presence of bull kelp biomass.
+- This paper discusses the influence of water endmember quantity and the use of giant kelp versus bull kelp endmembers on the accuracy of MESMA; tidal influence on bull kelp canopy areas; and performs a comparison of the use of Landsat images versus other surveys. The researchers were able to conclude that:
+  - The number of water endmembers does not significantly influence MESMA performance.
+  - Bull kelp specific endmembers outperform repurposed giant kelp endmembers.
+  - Tidal phases do not significantly influence the detection of bull kelp canopy areas.
+  - Compared to aerial imagery and private satellite images that have been employed by other researchers, Landsat images allow for long-term montioring since they are updated by the U.S. Geological Survey (USGS) every 16 days.
 
 ### Methods/Approach: Indicate algorithms, methodologies, or approaches you used to craft your solution. What was the reasoning or intuition for trying each methodology/algorithm. What does the overall pipeline look like and the details behindeach component? Make sure to establish any terminology or notation you will continue touse in this section. Note: Your methods and approaches may change through development, so in your project update, feel free to discuss all approaches you tried out! We expect at least 1 method/approach attempted.
 
