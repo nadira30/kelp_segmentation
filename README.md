@@ -67,7 +67,7 @@ Despite DRF allowing the comparison of kelp coverage in different sites, the pro
 ### Experiments / Results: Describe what you tried and what datasets were used. We aren’t expecting you to beat state of the art, but we are interested in you describing what worked or didn’t work and to give reasoning as to why you believe so. Compare your approach against baselines (either previously established or you established) in this section. Provide at least one qualitative result (i.e. a visual output of your system on an example image). Note: For the project update, feel free to discuss what worked and didn’t work. Why do you think an approach was (un)successful? We expect you to have dealt with dataset setup and completed at least 1 experimental result by the project update.
 
 #### Method1:  Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
-- The dataset was splitted into train-val-test ratio of 70-15-15. The CNN's architecture comprises:
+- The dataset was split into train-val-test ratio of 70-15-15. The CNN's architecture comprises:
     - Conv2D (32 filters, kernel size (3,3), ReLU activation)
     - MaxPooling2D (2x2)
     - Conv2D (64 filters, kernel size (3,3), ReLU activation)
