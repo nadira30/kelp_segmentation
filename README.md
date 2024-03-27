@@ -143,11 +143,11 @@ As can be observed by the images and metrics above, method 2 does not perform as
   * Linear(in_features=128, out_features=245000, bias=True)
   * ReLU()
     
-![results_3](https://raw.githubusercontent.com/nadira30/kelp_segmentation/nadi_branch/accuracy.png)|
+![results_3](https://raw.githubusercontent.com/nadira30/kelp_segmentation/nadi_branch/accuracy.png)
 |:--:| 
 | Image Showing quatitative metric results of Method 3: CNN |
 
-![quant_results_3](https://raw.githubusercontent.com/nadira30/kelp_segmentation/nadi_branch/Loss%20vs%20Epochs%20lr%3D1e-3.png)|
+![quant_results_3](https://raw.githubusercontent.com/nadira30/kelp_segmentation/nadi_branch/Loss%20vs%20Epochs%20lr%3D1e-3.png)
 |:--:| 
 | Image Showing quatitative metric results of Method 3: CNN |
 
