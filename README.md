@@ -85,6 +85,7 @@ Despite DRF allowing the comparison of kelp coverage in different sites, the pro
 |:--:| 
 | Image Showing results of Method 1: NIR + CNN |
 
+
 ![quant_results_1](https://github.com/nadira30/kelp_segmentation/assets/128086407/c51091cc-a953-4da2-864b-91f04377416f)
 |:--:| 
 | Image Showing quatitative metric results of Method 1: NIR + CNN |
