@@ -61,8 +61,8 @@ Despite DRF allowing the comparison of kelp coverage in different sites, the pro
 #### Method 2: Utilizing the Normalized Difference Water Index (NDWI), Normalized Difference Vegetation Index (NDVI), and RGB channels with the U-Net Convolutional Neural Network Architecture.
 - The Normalized Difference Water Index (NDWI) is a parameter that may be used to differentiate between different types of vegetation. NDWI = (Near Infrared - Shortwave Infrared)/(Near Infrared + Shortwave Infrared) [6]. Typically, values between -1 and 0 indicate a lack of vegetation or water content, while values greater than 1 indicate the presence of water [6].
 - The Normalized Difference Vegetation Index (NDVI) is a parameter that may also be used to differentiate between different types of vegetation. NDVI = (Near Infrared  - Red)/(Near Infrared + Red) [7]. NDVI values typically fall within the range of -1 and +1 with the value increasing in proportion to the increase in vegetation [7]. An NDVI of 0 may indicate a lack of vegetation (e.g. buildings), an NDVI of -1 may indicate a large body of water, and an NDVI of +1 may indicate dense vegetation [7].
-- Due to the utility of these parameters in detecting the presence of vegetation, they were used in combination with the RGB channels  to train a U-Net model that would be able to return a semantically segmented image with labels corresponding to kelp(1) or no kelp(0).
-- Additionally, the digital elevation map values and the cloud mask values were used to filter out irreleveant pixels prior to training.
+- Due to the utility of these parameters in detecting the presence of vegetation, they were used in combination with the RGB channels to train a U-Net model that would be able to return a semantically segmented image with labels corresponding to kelp(1) or no kelp(0).
+- Additionally, the digital elevation map values and the cloud mask values were used to filter out irreleveant pixels prior to training. Kelp forests typically extend about 20-30cm above the ocean's surface, so pixels with an elevation value that is 30cm's above the ocean's surface were filtered out. Similarly, pixels with the presence of clouds were filtered out as well.
 
 ### Experiments / Results: Describe what you tried and what datasets were used. We aren’t expecting you to beat state of the art, but we are interested in you describing what worked or didn’t work and to give reasoning as to why you believe so. Compare your approach against baselines (either previously established or you established) in this section. Provide at least one qualitative result (i.e. a visual output of your system on an example image). Note: For the project update, feel free to discuss what worked and didn’t work. Why do you think an approach was (un)successful? We expect you to have dealt with dataset setup and completed at least 1 experimental result by the project update.
 
@@ -113,10 +113,14 @@ Despite DRF allowing the comparison of kelp coverage in different sites, the pro
 |||Conv2D (2 filters, kernel size (3,3))|
 
 
-The visual results and quantitative results are shown in the image below:
+The visual results and quantitative results are shown in the images below:
 |![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/625de30b-2a63-46a3-9cf5-fd90cfff8049)|
 |:--:| 
 | Image Showing Results of Method 2 |
+|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/806ef2af-0ebe-4f12-b6c0-ea6855b3c12a)|
+|Evaluation of Method 2|
+
+As can be observed by the images and metrics above, method 2 does not perform as well as method 1 and prior implementations [3-6]. This could hint at a need to further tune the parameters used in the model.
 
 #### Method 3: Using the RGB channel with a modified Resnet Architecture. 
 - Unlike methods 1 and 2, the dataset was split into train-test rations 80-15.
