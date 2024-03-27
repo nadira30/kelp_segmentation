@@ -38,12 +38,18 @@ for comprehensive global monitoring.
 
 ### Methods/Approach: Indicate algorithms, methodologies, or approaches you used to craft your solution. What was the reasoning or intuition for trying each methodology/algorithm. What does the overall pipeline look like and the details behindeach component? Make sure to establish any terminology or notation you will continue touse in this section. Note: Your methods and approaches may change through development, so in your project update, feel free to discuss all approaches you tried out! We expect at least 1 method/approach attempted.
 
-Method 1: Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
-- Upon inspecting the plots of multiple channel separately, as shown in the image below, we can see that the NIR shows the clearest pattern of the kelp canopies. Therefore, we decided to try using the image of this channel to train, validate, and test our CNN model. 
-
+#### Method 1: Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
+- Upon inspecting the plots of multiple channel separately, as shown in the image below, we can see that the NIR shows the clearest pattern of the kelp canopies. Therefore, we decided to try using the image of this channel to train, validate, and test our CNN model.
+  
+#### Method 2: Utilizing the Normalized Difference Water Index (NDWI), Normalized Difference Vegetation Index (NDVI), and RGB channels with the U-Net Convolutional Neural Network Architecture.
+- The Normalized Difference Water Index (NDWI) is a parameter that may be used to differentiate between different types of vegetation. NDWI = (Near Infrared - Shortwave Infrared)/(Near Infrared + Shortwave Infrared) [3]. Typically, values between -1 and 0 indicate a lack of vegetation or water content, while values greater than 1 indIcate the presence of water [3].
+- The Normalized Difference Vegetation Index (NDVI) is a parameter that may also be used to differentiate between different types of vegetation. NDVI = (Near Infrared  - Red)/(Near Infrared + Red) [4]. NDVI values typically fall within the range of -1 and +1 with the value increasing in proportion to the increase in vegetation [4]. An NDVI of 0 may indicate a lack of vegetation (e.g. buildings), an NDVI of -1 may indicate a large body of water, and an NDVI of +1 may indicate dense vegetation [4].
+- Due to the utility of these parameters in detecting the presence of vegetation, they were used in combination with the RGB channels  to train a U-Net model that would be able to return a semantically segmented image with labels corresponding to kelp(1) or no kelp(0).
+- Additionally, the digital elevation map values and the cloud mask values were used to filter out irreleveant pixels prior to training.
+  
 ### Experiments / Results: Describe what you tried and what datasets were used. We aren’t expecting you to beat state of the art, but we are interested in you describing what worked or didn’t work and to give reasoning as to why you believe so. Compare your approach against baselines (either previously established or you established) in this section. Provide at least one qualitative result (i.e. a visual output of your system on an example image). Note: For the project update, feel free to discuss what worked and didn’t work. Why do you think an approach was (un)successful? We expect you to have dealt with dataset setup and completed at least 1 experimental result by the project update.
 
-Method1:  Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
+#### Method1:  Utilizing the Near-Infrared (NIR) channel of the image with Convolutional Neural Network (CNN).
 - The dataset was splitted into train-val-test ratio of 70-15-15. The CNN's architecture comprises:
     - Conv2D (32 filters, kernel size (3,3), ReLU activation)
     - MaxPooling2D (2x2)
@@ -55,6 +61,36 @@ Method1:  Utilizing the Near-Infrared (NIR) channel of the image with Convolutio
     - UpSampling2D (2x2)
     - Conv2D (1 filter, kernel size (3,3), sigmoid activation)
 - The visual results and quantitative results are shown in the image below:
+
+#### Method 2: Utilizing the Normalized Difference Water Index (NDWI), Normalized Difference Vegetation Index (NDVI), and RGB channels with the U-Net Convolutional Neural Network Architecture.
+- Similarly to method 1, the dataset was split into train-val-test ratios of 70-15-15.
+- The U-Net CNN architecture is as follows:
+
+|Encoding|Convolution|Decoding|
+|-----|-----|-----|
+|Conv2D (64 filters, kernel size (3,3))|Conv2D (1600 filters, kernel size (3,3))|Conv2D_transpose (320 filters, kernel size (3,3))|
+|Batch Normalization|Batch Normalization|Concatenate|
+|ReLU activation|ReLU activation|Conv2D (320 filters, kernel size (3,3))|
+|Conv2D (64 filters, kernel size (3,3))| Conv2D (1600 filters, kernel size (3,3))|Batch Normalization|
+|Batch Normalization|Batch Normalization|ReLU activation|
+|ReLU activation|ReLU activation|Conv2D (320 filters, kernel size (3,3))|
+|MaxPooling2D (5x5)||Batch Normalization|
+|Conv2D (320 filters, kernel size (3,3))||ReLU activation|
+|Batch Normalization||Conv2D_transpose (64 filters, kernel size (3,3))|
+|ReLU activation||Concatenate|
+|Conv2D (320 filters, kernel size (3,3))||Conv2D (64 filters, kernel size (3,3))|
+|Batch Normalization||Batch Normalization|
+|ReLU activation||ReLU activation|
+|MaxPooling2D (5x5)||Conv2D (64 filters, kernel size (3,3))|
+|||Batch Normalization|
+|||ReLU activation|
+|||Conv2D (2 filters, kernel size (3,3))|
+
+
+The visual results and quantitative results are shown in the image below:
+|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/625de30b-2a63-46a3-9cf5-fd90cfff8049)|
+|:--:| 
+| Image Showing Results of Method 2 |
 
 ### What’s next: What is your plan until the final project due date? What methods and experiments do you plan on running? Note: Include a task list (can use a table) indicating each step you are planning and anticipated completion date.
 
