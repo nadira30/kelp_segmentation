@@ -73,12 +73,19 @@ model = Sequential([
 
 print(model.summary())
 
+def dice_loss(y_true, y_pred):
+    y_true = tf.cast(y_true, tf.float32)
+    numerator = 2 * tf.reduce_sum(y_true * y_pred)
+    denominator = tf.reduce_sum(y_true + y_pred)
+
+    return 1 - numerator / denominator
+
 # Compile
 
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam', metrics=['accuracy'], loss=dice_loss)
 
 # Train
-history = model.fit(full_train_images, full_train_labels_resized, epochs=10, batch_size=32, validation_data=(full_val_images, full_val_labels_resized))
+history = model.fit(full_train_images, full_train_labels_resized, epochs=10, batch_size=16, validation_data=(full_val_images, full_val_labels_resized))
 
 # Evaluate the model
 loss, accuracy = model.evaluate(full_val_images, full_val_labels_resized)

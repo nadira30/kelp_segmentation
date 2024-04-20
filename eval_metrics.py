@@ -9,11 +9,19 @@ from scipy.spatial import distance
 from sklearn.metrics import roc_curve, auc
 
 # Function to calculate Dice coefficient
-def dice_coefficient(y_true, y_pred):
-    intersection = np.sum(y_true * y_pred)
-    union = np.sum(y_true) + np.sum(y_pred)
-    dice = (2.0 * intersection) / (union + 1e-8)  # Add a small epsilon to avoid division by zero
-    return dice
+# def dice_coefficient(y_true, y_pred):
+#     intersection = np.sum(y_true * y_pred)
+#     union = np.sum(y_true) + np.sum(y_pred)
+#     dice = (2.0 * intersection) / (union + 1e-8)  # Add a small epsilon to avoid division by zero
+#     return dice
+
+# Calculate Dice Coefficient
+def dice_coefficient(groundtruth_mask, pred_mask):
+    intersect = np.sum(pred_mask*groundtruth_mask)
+    total_sum = np.sum(pred_mask) + np.sum(groundtruth_mask)
+    dice = np.mean(2*intersect/total_sum)
+    return round(dice, 3) #round up to 3 decimal places
+
 
 # Load predicted and ground truth labels
 results_dir = "./results"

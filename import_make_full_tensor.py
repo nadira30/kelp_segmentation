@@ -76,14 +76,14 @@ def make_full_tensor(images_folder, labels_folder):
 
 
 # Define paths to train, validation, and test folders
-train_images_folder = "./train_val_test_data/train_images/"
-train_labels_folder = "./train_val_test_data/train_labels/"
+train_images_folder = "./data/train_val_test_data/train_images/"
+train_labels_folder = "./data/train_val_test_data/train_labels/"
 
-val_images_folder = "./train_val_test_data/val_images/"
-val_labels_folder = "./train_val_test_data/val_labels/"
+val_images_folder = "./data/train_val_test_data/val_images/"
+val_labels_folder = "./data/train_val_test_data/val_labels/"
 
-test_images_folder = "./train_val_test_data/test_images/"
-test_labels_folder = "./train_val_test_data/test_labels/"
+test_images_folder = "./data/train_val_test_data/test_images/"
+test_labels_folder = "./data/train_val_test_data/test_labels/"
 
 # Create preprocessed data directory
 preprocessed_data_dir = "./preprocessed_data/"

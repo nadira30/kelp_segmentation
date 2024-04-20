@@ -78,7 +78,7 @@ def make_full_tensor(images, labels):
     return full_images, full_labels
 
 # Load metadata CSV file
-metadata = pd.read_csv("./data/metadata.csv")
+metadata = pd.read_csv("/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/metadata_new.csv")
 
 # Filter training images and labelst
 train_images = metadata[metadata['dataset'] == 'train_img']['filename'].values

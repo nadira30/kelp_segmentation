@@ -5,6 +5,7 @@ import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
 from tifffile import imread
+import os
 
 def normalize_img(img, type):
     try:
@@ -81,8 +82,9 @@ def load_image_select_channel(tif_image_name):
 
 
 # Load the model and weights
-model = tf.keras.models.load_model('CNN_model_v3.h5')
-model.load_weights('CNN_model_weights_v3.h5')
+file_path = os.path.abspath("CNN_model_v4.h5")
+model = tf.keras.Model(file_path)
+model.load_weights("/Users/nadira/gatech/Sp24/CV/kelp_segmentation/CNN_model_weights_v3.h5")
 
 # Assuming 'test_images' is a list of paths to test set images
 metadata = pd.read_csv("./data/metadata.csv")
