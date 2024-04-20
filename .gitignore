@@ -1,3 +1,6 @@
 /data/
 /load_img.py
 /first_model.pth
+/CNN_model_v4.h5
+/CNN_model_weights_v4.h5
+/Kelp_Segmentation_Tofunmi.ipynb
