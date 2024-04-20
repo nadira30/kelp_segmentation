@@ -43,21 +43,25 @@ def load_image_select_channel(test_image_name):
         tif_img_slc = tif_img[:, :, 1:2]
         
         image_img = normalize_img(img=tif_img_slc, type="images")
-        
+
     except Exception as e:
+        # set dummy image
+        image_img = np.zeros((350, 350))
         print("Error:", e)
-        
     return image_img
 
 
+
 # Load the model and weights
-model = tf.keras.models.load_model('CNN_model_v1.h5')
-model.load_weights('CNN_model_weights_v1.h5')
+file_path = os.path.abspath('CNN_model_v1.h5')
+weights_path = os.path.abspath('CNN_model_weights_v1.h5')
+model = tf.keras.Model(file_path)
+# model.load_weights(weights_path)
 
 # Assuming 'test_images' is a list of paths to test set images
 #metadata = pd.read_csv("./data/metadata_new.csv")
 #test_images = metadata[metadata['dataset'] == 'test_img']['filename'].values
-test_images = sorted(os.listdir("./train_val_test_data/test_images/"))
+test_images = sorted(os.listdir("data/train_val_test_data/test_images/"))
 
 # Create results folder if it doesn't exist
 if not os.path.exists('results'):
