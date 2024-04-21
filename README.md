@@ -176,8 +176,11 @@ robust to variability due to the skip connections and multi-level mature extract
 from diverse examples, the model can accurately differentiate kelp and other elements, even in images with varying spatial patterns (including clouds).  
 
 ##### Visuals:  Approach pipeline
-
-![UNET diagram[9]](https://raw.githubusercontent.com/nadira30/kelp_segmentation/main/Unet_diagram.jpeg)
+<figure align="center">
+  <img src="https://raw.githubusercontent.com/nadira30/kelp_segmentation/main/Unet_diagram.jpeg")
+"/>
+  <figcaption> UNET diagram[9] </figcaption>
+</figure>
 
 --------------------------------------------------------------------------
 ### Experimental setup
