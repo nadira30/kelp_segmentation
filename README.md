@@ -21,8 +21,6 @@ A kelp forest is an ocean community made up of dense groupings of kelps. These f
 
 However, these forests face threats from multitude of factors such as climate change, acidification, overfishing, and unsustainable harvesting practices [1]. 
 
-To address these pressing conservation concerns and safeguard the future of kelp forests, innovative approaches are needed. One promising strategy involves harnessing the power of technology to monitor and protect these vital marine habitats. By leveraging advances in remote sensing, computer vision, and machine learning, we propose the development of a comprehensive model capable of monitoring kelp forests using coastal satellite imagery. Such a model would enable tracking of changes in kelp abundance, empowering conservation efforts and informing sustainable management practices.
-
 | ![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/965b146e-3d3b-4394-955c-e50391a7ab1c) | 
 |:--:| 
 | *Image Showing Sardines Seeking Food and Shelter in a Kelp Forest [2]*|
@@ -31,13 +29,16 @@ To address these pressing conservation concerns and safeguard the future of kelp
 |:--:| 
 | *Image Showing the change in Kelp forest abundance from 2008 to 2019* |
 
-We aim to develop a segmentation model based of a Convolutional Neural Network (CNN). The input to our model are the satellite images of 350x350 pixels containing 7 channels of which we will experiment with different selection/combination of channels. The output/results is the predicted labels which represents the area where it contains kelp (1) or no kelp (0). The goal is to successfully match the predicted kelp labels with the ground truth label in the dataset we used to validate our performance.
+To address these pressing conservation concerns and safeguard the future of kelp forests, innovative approaches are needed. One promising strategy involves harnessing the power of technology to monitor and protect these vital marine habitats. By leveraging advances in remote sensing, computer vision, and machine learning, we propose the development of a comprehensive model capable of monitoring kelp forests using coastal satellite imagery. Such a model would enable tracking of changes in kelp abundance, empowering conservation efforts and informing sustainable management practices. The successful predictions and ongoing automated monitoring can empower authorities, policymakers, and marine conservation organizations to make informed decisions about actions necessary for the preservation of coastal ecosystems.
+
+We aim to develop a kelp segmentation model based on a Convolutional Neural Network (CNN). The input to our model is the satellite images of 350x350 pixels containing 7 channels including Short-wave Infrared (SWIR), Near Infrared (NIR), Red (R), Green(G), Blue (B), Cloud Mask, and Elevation (Ground Mask) of which we will experiment with different selections/combinations of channels as the input to the neural networks. The output/results are the predicted labels that represent the pixels containing kelp (1) or no kelp (0). The goal is to successfully match the predicted kelp labels with the ground truth label in the dataset we used to validate our performance with more than 50% accuracy (mIOU and Dice coefficient).
+
 
 ![7channel](https://github.com/nadira30/kelp_segmentation/assets/128086407/18671950-b74d-4559-8287-25e96f84c3c4)
 |:--:| 
 | *Image Showing the 7 channels in the satellite imagery* |
 
-
+![intro](https://github.com/nadira30/kelp_segmentation/assets/128086407/fbde29d7-669d-40ef-bad5-fe7fcd9cb0f0)
 |:--:| 
 | *Image Showing the Ground truth label of pixels containing kelp as the expected output* |
 
