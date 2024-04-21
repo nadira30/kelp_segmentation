@@ -25,16 +25,16 @@ We aim to develop a kelp segmentation model based on a Convolutional Neural Netw
 
 ![7channel](https://github.com/nadira30/kelp_segmentation/assets/128086407/18671950-b74d-4559-8287-25e96f84c3c4)
 |:--:| 
-| *Image Showing the 7 channels in the satellite imagery [4]* |
+| *Image Showing the 7 channels in the satellite imagery* |
 
 ![intro](https://github.com/nadira30/kelp_segmentation/assets/128086407/fbde29d7-669d-40ef-bad5-fe7fcd9cb0f0)
 |:--:| 
-| *Image Showing the Ground truth label of pixels containing kelp as the expected output [5]* |
+| *Image Showing the Ground truth label of pixels containing kelp as the expected output* |
 
 
 ### Related Works: 
 
-### [6] Artificial intelligence convolutional neural networks map giant kelp forests from satellite imagery
+### [4] Artificial intelligence convolutional neural networks map giant kelp forests from satellite imagery
 The paper suggests the use of a Mask R-CNN (mask region-based convolutional neural network) to detect giant kelp forests 
 along the coastlines of Southern California and Baja California using satellite imagery. The authors aimed to develop a 
 more robust and accurate method for detecting kelp forests that can overcome the challenges posed by cloud cover using a mask RCNN. 
@@ -58,7 +58,7 @@ Our work aimed to address the challenges of this paper defined by the potential 
 in reflectance and the high variability in the spatial patterns of kelp forests.
 
 
-#### [7] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas):
+#### [5] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas):
 - The paper evaluates two methods to automate kelp detection from satellite imagery: 1) crowdsourced classifications from the Floating Forests citizen science project (FF8), and 2) an automated spectral approach using a decision tree combined with multiple endmember spectral mixture analysis (DTM).
 - Both methods were applied to classify kelp from Landsat 5, 7, 8 imagery covering the Falkland Islands from 1985-2021.
 - DTM showed better performance than FF8 when validated against expert manual classifications of 8 Landsat scenes covering over 2,700 km of coastline.
@@ -67,9 +67,9 @@ in reflectance and the high variability in the spatial patterns of kelp forests.
   
 ![results_remote_sensing](https://github.com/nadira30/kelp_segmentation/assets/128086407/bd4350ca-dd28-45f5-9a77-abd99fae646c)
 |:--:| 
-| Image Showing the results of automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) [7]|
+| Image Showing the results of automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) [5]|
 
-#### [8] Mapping bull kelp canopy in northern California using Landsat to enable long-term monitoring
+#### [6] Mapping bull kelp canopy in northern California using Landsat to enable long-term monitoring
 - This paper is focused on the mapping and monitoring of kelp, specifically bull kelp, though the use of Landsat satellite images.
 - Similar to our previous reference, MESMA was used to predict the presence of bull kelp biomass.
 - This paper discusses the influence of water endmember quantity and the use of giant kelp versus bull kelp endmembers on the accuracy of MESMA; tidal influence on bull kelp canopy areas; and performs a comparison of the use of Landsat images versus other surveys. The researchers were able to conclude that:
@@ -78,7 +78,7 @@ in reflectance and the high variability in the spatial patterns of kelp forests.
   - Tidal phases do not significantly influence the detection of bull kelp canopy areas.
   - Compared to aerial imagery and private satellite images that have been employed by other researchers, Landsat images allow for long-term montioring since they are updated by the U.S. Geological Survey (USGS) every 16 days.
 
-#### [9] Automatic Hierarchical Classification of Kelps Using Deep Residual Features
+#### [7] Automatic Hierarchical Classification of Kelps Using Deep Residual Features
 
 This paper presents a binary classification method that classifies kelps in images collected by autonomous underwater vehicles. 
 The paper shows that kelp classification using classification by deep residual features DRF outperforms CNN and features extracted from pre-trained CNN such as ImageNets. The performance was demonstrated using ground truth data provided by marine experts and showed a high correlation with previously conducted manual surveys. The metrics evaluated were: F1 score, accuracy, precision, and recall.  
@@ -87,7 +87,7 @@ A binary classifier is trained for every node in the hierarchical tree of the gi
 Furthermore, color channel stretch was used on images to reduce the effect of the underwater color distortion phenomenon. For feature extraction, a pre-trained Resnet 50 was used, and the proposed method was implemented using MatConvNet and the SVM classifier.
 Despite DRF allowing the comparison of kelp coverage in different sites, the proposed method had the drawback of an over-prediction of kelp at high percentage cover and under-prediction at low coverage, even though the prediction was negligible in some sites. 
 
-#### [10] Submerged Kelp Detection with Hyperspectral Data
+#### [8] Submerged Kelp Detection with Hyperspectral Data
 This paper focuses on the detection of submerged kelp using hyperspectral AisaEAGLE data. The authors propose their solution as an alternative to other kelp mapping approaches that use reflectance-based classification methods and are thus limited in their ability to detect kelp below a certain depth. The proposed solution incorporates an anomaly filter for filtering out any effects on the water surface, an algorithm for kelp feature extraction, and the use of specific spectral features of kelps for identifying pixels with kelp.
 
 --------------------------------------------------------------------------
@@ -171,7 +171,7 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 
 ##### Visuals:  Approach pipeline
 
-|![UNET diagram[11]]()
+|![UNET diagram[9]]()
 
 --------------------------------------------------------------------------
 --------------------------------------------------------------------------
@@ -181,11 +181,11 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 We arrived at the approach discussed in the Methods section through the following experiments:
 - Model Architecture: We experimented with different neural networks for semantic segmentation.
 - Model Parameters: We experimented with different loss functions e.g. binary cross-entropy and our custom dice_loss function to train our neural network. We also tried out different values for the learning rate, optimizer, model depth, etc.
-- Data Preprocessing: We experimented with different data pre-processing methods such as the use of the Normalized Difference Water Index (NDWI)[12] or the Normalized Difference Vegetation Index (NDVI)[13] parameters which are both used for determining the presence/absence of vegetation. The most appropriate data pre-processing techniques will be chosen based on the accuracy values recorded when the processed data is used to train our model.
+- Data Preprocessing: We experimented with different data pre-processing methods such as the use of the Normalized Difference Water Index (NDWI)[10] or the Normalized Difference Vegetation Index (NDVI)[11] parameters which are both used for determining the presence/absence of vegetation. The most appropriate data pre-processing techniques will be chosen based on the accuracy values recorded when the processed data is used to train our model.
 
 By optimizing the model architecture and parameters, as well as the data preprocessing methods, we should arrive at a model that accurately maps kelp in satellite images.
 
-To implement our method for kelp segmentation of satellite images, we made use of the dataset from the ‘Kelp Wanted: Segmenting Kelp Forests’ competition on the driven data website [14]. The training set includes 5,635 TIFF images/label pairs, and the test set includes 1,426 TIFF images. Each image/label has a size of 350x350 pixels, with the input image having 7 channels and the label having 1 channel (binary mask of kelp or no kelp). The 7 channels of the input image are described below. 
+To implement our method for kelp segmentation of satellite images, we made use of the dataset from the ‘Kelp Wanted: Segmenting Kelp Forests’ competition on the driven data website [12]. The training set includes 5,635 TIFF images/label pairs, and the test set includes 1,426 TIFF images. Each image/label has a size of 350x350 pixels, with the input image having 7 channels and the label having 1 channel (binary mask of kelp or no kelp). The 7 channels of the input image are described below. 
 
 - Short-Wave Infrared (SWIR): The SWIR band is highly useful for differentiating between water and land. Water bodies absorb more SWIR light, appearing darker, which can help distinguish kelp, which might reflect slightly more SWIR than plain open water.
 Near-Infrared (NIR): NIR is generally absorbed by water but reflected by vegetation. Kelp forests will likely show higher reflectance in this band compared to the surrounding water, making NIR a critical channel for identifying aquatic vegetation.
@@ -235,13 +235,13 @@ The example of visual output (qualitative) results are shown in the images below
 | *Image Showing the example image – ground truth - predicted* |
 
 
-For the baseline results comparison, we will compare our results to the baseline established by the study "[7] Automated Satellite Remote Sensing of Giant Kelp at the Falkland Islands (Islas Malvinas)." This baseline indicates that the automated DTM algorithm performed nicely, producing labels closely aligned with the ground truth (expert-labeled). However, the automated KD algorithm did not perform as well, with its results significantly deviating from the expert labels.
+For the baseline results comparison, we will compare our results to the baseline established by the study "[5] Automated Satellite Remote Sensing of Giant Kelp at the Falkland Islands (Islas Malvinas)." This baseline indicates that the automated DTM algorithm performed nicely, producing labels closely aligned with the ground truth (expert-labeled). However, the automated KD algorithm did not perform as well, with its results significantly deviating from the expert labels.
 
 Upon quantitative evaluation, the DTM algorithm demonstrated performance that matched or surpassed our model. Both the DTM and our U-Net model exhibited minor variations in size and slight deviations from the ground truth, with occasional over-labeling or under-labeling. In contrast, the KD algorithm significantly underperformed when compared to our model, often failing to sufficiently mark the kelp on the satellite images.
 
 ![results_isla_malvinas](https://github.com/nadira30/kelp_segmentation/assets/128086407/088cea68-42a2-4514-b067-7293c1f4467c)
 |:--:| 
-| *Image Showing the results from the paper: Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) [7]* |
+| *Image Showing the results from the paper: Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) [5]* |
 
 Additionally, the table containing the input channel combination and quantitative results (mIOU + Dice) are shown in the table below:
 
@@ -328,27 +328,23 @@ Thanapol Tantagunninat:
 
 [3] NASA Earth Observatory. Monitoring the Collapse of Kelp Forests. https://earthobservatory.nasa.gov/images/148391/monitoring-the-collapse-of-kelp-forests
 
-[4] Image Showing ...
+[4] Marquez, L., Fragkopoulou, E., Cavanaugh, K.C. et al. Artificial intelligence convolutional neural networks map giant kelp forests from satellite imagery. Sci Rep 12, 22196 (2022). https://doi.org/10.1038/s41598-022-26439-w
 
-[5] Image Showing ...
-
-[6] Marquez, L., Fragkopoulou, E., Cavanaugh, K.C. et al. Artificial intelligence convolutional neural networks map giant kelp forests from satellite imagery. Sci Rep 12, 22196 (2022). https://doi.org/10.1038/s41598-022-26439-w
-
-[7] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas)
+[5] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas)
 Houskeeper HF, Rosenthal IS, Cavanaugh KC, Pawlak C, Trouille L, et al. (2022) Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas). PLOS ONE 17(1): e0257933. https://doi.org/10.1371/journal.pone.0257933
 
-[8] Finger, D. J. I., McPherson, M. L., Houskeeper, H. F., & Kudela, R. M. (2020, December 17). Mapping Bull kelp canopy in northern California using landsat to enable long-term monitoring. Remote Sensing of Environment. https://www.sciencedirect.com/science/article/pii/S0034425720306167#:~:text=Past%20efforts%20to%20estimate%20kelp,et%20al.%2C%202006 
+[6] Finger, D. J. I., McPherson, M. L., Houskeeper, H. F., & Kudela, R. M. (2020, December 17). Mapping Bull kelp canopy in northern California using landsat to enable long-term monitoring. Remote Sensing of Environment. https://www.sciencedirect.com/science/article/pii/S0034425720306167#:~:text=Past%20efforts%20to%20estimate%20kelp,et%20al.%2C%202006 
 
-[9] Mahmood A, Ospina AG, Bennamoun M, An S, Sohel F, Boussaid F, Hovey R, Fisher RB, Kendrick GA. Automatic Hierarchical Classification of Kelps Using Deep Residual Features. Sensors. 2020; 20(2):447. https://doi.org/10.3390/s20020447
+[7] Mahmood A, Ospina AG, Bennamoun M, An S, Sohel F, Boussaid F, Hovey R, Fisher RB, Kendrick GA. Automatic Hierarchical Classification of Kelps Using Deep Residual Features. Sensors. 2020; 20(2):447. https://doi.org/10.3390/s20020447
 
-[10] Uhl, F., Bartsch, I., & Oppelt, N. (2016, June 8). Submerged kelp detection with hyperspectral data. MDPI. https://www.mdpi.com/2072-4292/8/6/487 
+[8] Uhl, F., Bartsch, I., & Oppelt, N. (2016, June 8). Submerged kelp detection with hyperspectral data. MDPI. https://www.mdpi.com/2072-4292/8/6/487 
 
-[11] Unet diagram 
+[9] Unet diagram 
 
-[12] Gao, B.-C., Hunt, E. R., Jackson, R. D., Lillesaeter, O., Tucker, C. J., Vane, G., Bowker, D. E., Bowman, W. D., Cibula, W. G., Deering, D., & Elvidge, C. D. (1999, February 22). Ndwi-a normalized difference water index for remote sensing of vegetation liquid water from space. Remote Sensing of Environment. https://www.sciencedirect.com/science/article/abs/pii/S0034425796000673 
+[10] Gao, B.-C., Hunt, E. R., Jackson, R. D., Lillesaeter, O., Tucker, C. J., Vane, G., Bowker, D. E., Bowman, W. D., Cibula, W. G., Deering, D., & Elvidge, C. D. (1999, February 22). Ndwi-a normalized difference water index for remote sensing of vegetation liquid water from space. Remote Sensing of Environment. https://www.sciencedirect.com/science/article/abs/pii/S0034425796000673 
 
-[13] GISGeography. (2024, March 10). What is NDVI (normalized difference vegetation index)?. GIS Geography. https://gisgeography.com/ndvi-normalized-difference-vegetation-index/ 
+[11] GISGeography. (2024, March 10). What is NDVI (normalized difference vegetation index)?. GIS Geography. https://gisgeography.com/ndvi-normalized-difference-vegetation-index/ 
 
-[14] DrivenData. (n.d.). Kelp wanted: Segmenting kelp forests. https://www.drivendata.org/competitions/255/kelp-forest-segmentation/page/792/ 
+[12] DrivenData. (n.d.). Kelp wanted: Segmenting kelp forests. https://www.drivendata.org/competitions/255/kelp-forest-segmentation/page/792/ 
 
-[15] U.S. Department of the Interior. (n.d.). Kelp forests. National Parks Service. https://www.nps.gov/glba/learn/nature/kelp-forest.htm#:~:text=Kelp%20might%20look%20like%20a,Kelp%20does%20not%20have%20roots. 
+[13] U.S. Department of the Interior. (n.d.). Kelp forests. National Parks Service. https://www.nps.gov/glba/learn/nature/kelp-forest.htm#:~:text=Kelp%20might%20look%20like%20a,Kelp%20does%20not%20have%20roots. 
