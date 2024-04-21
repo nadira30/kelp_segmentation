@@ -112,11 +112,11 @@ Furthermore, color channel stretch was used on images to reduce the effect of th
 Despite DRF allowing the comparison of kelp coverage in different sites, the proposed method had the drawback of an over-prediction of kelp at high percentage cover and under-prediction at low coverage, even though the prediction was negligible in some sites. 
 
 --------------------------------------------------------------------------
-### [6] Methods/Approach:
+### Methods/Approach:
 
 -------------------------------------------------------
 #### Method Overview: 
-##### current best approach. 
+##### Current best approach. 
 In our previous work, we explored 2 distinctive model architectures (UNET, CNN).
 The Unet model performed better than the CNN architectures. In our final work, we build upon the UNET architecture by 
 tuning the hyperparameters of the model and testing numerous data augmentation techniques consisting of combining 
@@ -167,9 +167,7 @@ Table [1] shows the architecture of the model.
 | conv2d_9 (Conv2D)                           | (None, 350, 350, 64)     | 36928|['re_lu_8[0][0]']                                                                                
 | batch_normalization_9 (BatchNormalization)) | (None, 350, 350, 64)     |  256    |     ['conv2d_9[0][0]']
 | re_lu_9 (ReLU)                              | (None, 350, 350, 64)     |  0    |        ['batch_normalization_9[0][0]']                                              
-| conv2d_10 (Conv2D)                          | (None, 350, 350, 2)      |  130     |    ['re_lu_9[0][0]']  
-
-
+| conv2d_10 (Conv2D)                          | (None, 350, 350, 2)      |  130     |    ['re_lu_9[0][0]']
 
 A UNET is generally composed of three distinctive blocks: a convolution operation, an encoder structure, and a decoder structure. The convolution operation is used as a building block and consists of two convolution layers, batch normalization and ReLu activation function. 
 The encoder part takes an input tensor and applies the convolution operation followed by max pooling to return the output of the convolution block and the max-pooled output. The max pooling helps capture large receptive fields and reduces spatial dimensions. 
