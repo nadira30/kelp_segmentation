@@ -159,9 +159,7 @@ Finally, the model then performs a couple of transformation operations before ap
 To avoid a bias towards the majority class leading to poor performance, we used a dice loss function to maximize the dice coefficient by measuring the overlap between the predicted(p) and ground truth image mask(y). 
 The dice loss is defined by: 
 
-$$
-  DiceLoss(y, p) = \frac {1 - (2 * (y * p) + 1)}{(y + p + 1)} 
-$$
+![dice_loss](https://latex.codecogs.com/svg.image?&space;DiceLoss(y,p)=\frac{1-2\cdot&space;y\cdot&space;p&plus;1}{(y&plus;p&plus;1)})
 
 
 ##### Contribution:
@@ -253,7 +251,7 @@ Upon quantitative evaluation, the DTM algorithm demonstrated performance that ma
 Additionally, the table containing the input channel combination and quantitative results (mIOU + Dice) are shown in the table below:
 
 <figure align="center">
-  <img src="https://github.com/nadira30/kelp_segmentation/assets/128086407/4dba168f-6f35-40ee-92d4-c634c38e82d5"/>
+  <img src="https://github.com/nadira30/kelp_segmentation/assets/128086407/4dba168f-6f35-40ee-92d4-c634c38e82d5" />
   <figcaption> Result Table </figcaption>
 </figure>
 
@@ -273,7 +271,8 @@ Since this project is concerned with semantic segmentation, we determined that a
 - Ensemble of UNet and ResNet50 - 0.48
 - UNet - 0.52
 
-Of these three models, the UNet model described in our Methods section performed best based on our evaluation metrics. The under-performance of the ensemble and ResNet50+UNet models may be attributed to inadequately tuned parameters.
+Of these three models, the UNet model described in our Methods section performed best based on our evaluation metrics.
+The under-performance of the ensemble and ResNet50+UNet models may be attributed to inadequately tuned parameters.
 
 
 ##### Key Result Performance for Model Parameters: 
@@ -283,8 +282,8 @@ Loss function: The dice loss was chosen over the binary cross entropy loss due t
 - Dice Loss - 0.52
 - Binary Cross Entropy - 0.45
 - Learning rate: A learning rate of 5e-3 was chosen over 1e-3 due to its performance.
-  1e-3 - 0.485
-  5e-3 - 0.52
+  * 1e-3 - 0.485
+  * 5e-3 - 0.52
 
 
 ### Discussion
