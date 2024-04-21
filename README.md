@@ -252,10 +252,10 @@ Upon quantitative evaluation, the DTM algorithm demonstrated performance that ma
 
 Additionally, the table containing the input channel combination and quantitative results (mIOU + Dice) are shown in the table below:
 
-
-![table_results](https://github.com/nadira30/kelp_segmentation/assets/128086407/4dba168f-6f35-40ee-92d4-c634c38e82d5)
-|:--:|
-| *results table* |
+<figure align="center">
+  <img src="https://github.com/nadira30/kelp_segmentation/assets/128086407/4dba168f-6f35-40ee-92d4-c634c38e82d5"/>
+  <figcaption> Result Table </figcaption>
+</figure>
 
 Here are some thought processes, insights, and conclusions from the experiment:
 
