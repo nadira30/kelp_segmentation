@@ -159,9 +159,11 @@ Finally, the model then performs a couple of transformation operations before ap
 To avoid a bias towards the majority class leading to poor performance, we used a dice loss function to maximize the dice coefficient by measuring the overlap between the predicted(p) and ground truth image mask(y). 
 The dice loss is defined by: 
 
-![dice_loss](https://latex.codecogs.com/svg.image?&space;DiceLoss(y,p)=\frac{1-2\cdot&space;y\cdot&space;p&plus;1}{(y&plus;p&plus;1)})
 
-
+<figure align="center">
+  <img src="https://latex.codecogs.com/svg.image?&space;DiceLoss(y,p)=\frac{1-2\cdot&space;y\cdot&space;p&plus;1}{(y&plus;p&plus;1)}"/>
+  <figcaption> Dice Loss Formula </figcaption>
+</figure>
 ##### Contribution:
 The main purpose of our project was to tackle current issues specified by previous Kelp detection algorithms such as  
 the potential interference of occasional clouds in the detection of kelp forests due to changes in reflectance and the 
@@ -177,8 +179,7 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 
 ##### Visuals:  Approach pipeline
 <figure align="center">
-  <img src="https://raw.githubusercontent.com/nadira30/kelp_segmentation/main/Unet_diagram.jpeg")
-"/>
+  <img src="https://raw.githubusercontent.com/nadira30/kelp_segmentation/main/Unet_diagram.jpeg")/>
   <figcaption> UNET diagram[9] </figcaption>
 </figure>
 
