@@ -287,9 +287,6 @@ Loss function: The dice loss was chosen over the binary cross entropy loss due t
   5e-3 - 0.52
 
 
-
-
-
 ### Discussion
 --------------------------------------------------------------------------
 Discussion (15pt)
@@ -298,34 +295,36 @@ accomplished, what you learned, and what remains for future works.
 ○ If you were to start over today, is that a different strategy you would take to make
 progress on your overall problem statement?
 --------------------------------------------------------------------------
-
   
 ### Challenges Encountered
 
 --------------------------------------------------------------------------
-● Challenges Encountered (10pt)
-○ What challenges did your team encounter throughout the project?
---------------------------------------------------------------------------
+- Computational power: Due to the complexity of the model and the extensive size of the dataset, training requires substantial RAM and considerable computational resources. This intensive demand can significantly impact the runtime, necessitating the use of better computers and GPUs. We tried using the PACE cluster but ran into multiple issues. We decided to pursue Google Colab which was enough since we were running out of credits. 
+- Exceeding 0.55 dice coefficient: Despite experimenting with various model architectures and combinations, we struggled to achieve a Dice coefficient exceeding 55%. This threshold highlights potential limitations in our model’s architecture or the need for further optimization of our training processes.
+- Error in the dataset: During a detailed manual inspection and survey of the dataset, we discovered that numerous satellite images were corrupted. These corruptions manifest as unexpected artifacts, such as white tabs,  grids, or blackout areas, obscuring critical details of the land and water features represented in the images. These might be one of the culprit in reducing the model’s performance.
 
+--------------------------------------------------------------------------
 
 
 ### Team member contributions: 
 
 --------------------------------------------------------------------------
-● Team Member Contributions (10pt)
-○ Each team member should individually fill out the team member contribution MS
-form. https://forms.office.com/r/9HSrYJNvik (you will need to login to your GT
-credentials to complete this form, one response per student).
+#### Nadira Amadou:
+- Tuneed hyperparameters for UNET 
+- Implemented a UNET architecture with a Resnet 34 backbone
+- Looked into Mask RCNN implementation  
+Contributed in report 
+#### Oluwatofunmi Sodimu:
+- Tuned hyperparameters for UNET 
+- Implemented UNET architecture with Resnet 
+- Looked into Mask RCNN implementation
+- Contributed in report   
+#### Thanapol Tantagunninat:
+- Tested different Data augmentation Techniques on the model
+- Tuned and Tested different hyperparameters 
+- Contributed in report 
+
 --------------------------------------------------------------------------
-
-Nadira Amadou:
-- 
-
-Oluwatofunmi Sodimu:
-- 
-
-Thanapol Tantagunninat:
-- 
 
 
 ### References
