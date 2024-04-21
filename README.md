@@ -220,6 +220,28 @@ Please cite works following IEEE guidelines.
 ○ (10pt) Your project in context: What was missing in prior work and how does
 your work fill this hole?
 --------------------------------------------------------------------------
+### [9] Artificial intelligence convolutional neural networks map giant kelp forests from satellite imagery
+The paper suggests the use of a Mask R-CNN (mask region-based convolutional neural network) to detect giant kelp forests 
+along the coastlines of Southern California and Baja California using satellite imagery. The authors aimed to develop a 
+more robust and accurate method for detecting kelp forests that can overcome the challenges posed by cloud cover using a mask RCNN. 
+They used a mask RCNN architecture for giant kelp identification and segmentation because it successfully combines the high-performance 
+algorithms of Faster R-CNN for target identification and FCN for mask prediction, boundary regression, and classification. 
+
+To solve this problem, they optimize the mask R-CNN model through hyperparameterization. Model hyper-parameterization was 
+tuned through cross-validation procedures testing the effect of data augmentation, and different learning rates and anchor 
+sizes. The optimal model achieved impressive results, with a Jaccard's index of $0.87 \pm 0.07$, a Dice index of $0.93 \pm 0.04$, 
+and an over-prediction rate of just 0.06. 
+The loss function used in the model is defined by the combination of Classification Loss, Bounding Box Regression, 
+and Mask Loss where the Classification Loss and Bounding Box Regression Loss are determined through cross-entropy as in the Faster R-CNN framework31,32, 
+and reflect the ability of the model to classify kelp and to identify the regions of the image (i.e., bounding boxes) where kelp occurs. 
+The Mask Loss is determined through binary cross-entropy per pixel34, for the images where kelp was classified, and reflects the ability of 
+the model to identify the masks (i.e., the outlines) of kelp forests. 
+
+The authors show that their approach can effectively detect kelp forests, 
+even in the presence of occasional clouds, and provide a valuable tool for monitoring and studying these important marine ecosystems. 
+This work advances the state-of-the-art in remote sensing and computer vision techniques for kelp detection and can be applied to other similar applications in the future.
+Our work aimed to address the challenges of this paper defined by the potential interference of occasional clouds in the detection of kelp forests due to changes
+in reflectance and the high variability in the spatial patterns of kelp forests.
 
 #### [3] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas):
 - The paper evaluates two methods to automate kelp detection from satellite imagery: 1) crowdsourced classifications from the Floating Forests citizen science project (FF8), and 2) an automated spectral approach using a decision tree combined with multiple endmember spectral mixture analysis (DTM).
