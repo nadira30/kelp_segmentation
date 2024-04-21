@@ -272,15 +272,21 @@ A binary classifier is trained for every node in the hierarchical tree of the gi
 Furthermore, color channel stretch was used on images to reduce the effect of the underwater color distortion phenomenon. For feature extraction, a pre-trained Resnet 50 was used, and the proposed method was implemented using MatConvNet and the SVM classifier.
 Despite DRF allowing the comparison of kelp coverage in different sites, the proposed method had the drawback of an over-prediction of kelp at high percentage cover and under-prediction at low coverage, even though the prediction was negligible in some sites. 
 
-### Methods/Approach: 
+--------------------------------------------------------------------------
+### [6] Methods/Approach:
+
 -------------------------------------------------------
-Method/Approach (50pt): ○ (20pt) Method Overview: 
-■ Clearly specify your current best approach. 
-In our previous work, we explored 2 distinctive model architectures (UNET, CNN). The Unet model performed better than the CNN architectures. In our final work, we build upon the UNET architecture by tuning the hyperparameters of the model and testing numerous data augmentation techniques consisting of combining different channels from the NDVR images provided for the sake of the project. 
+#### Method Overview: 
+##### current best approach. 
+In our previous work, we explored 2 distinctive model architectures (UNET, CNN).
+The Unet model performed better than the CNN architectures. In our final work, we build upon the UNET architecture by 
+tuning the hyperparameters of the model and testing numerous data augmentation techniques consisting of combining 
+different channels from the NDVR images provided for the sake of the project. 
 
-■ Define all necessary notation / terminology. ■ Specify each component of your approach and for non-standard components describe the details that would be necessary for someone familiar with computer vision to understand what you are doing. • E.g. If you are building off an architecture from prior works, please briefly describe the architecture. 
+##### Architecture Description:
 
-The UNET architecture used in this project is building off of an existing architecture provided by a Paperspace blog on UNET. Table [] shows the architecture of the model.
+The UNET architecture used in this project is building off of an existing architecture provided by a Paperspace blog on UNET. 
+Table [1] shows the architecture of the model.
 
 
 | Layer (type)                                | Output Shape             |  Param # |     Connected to |                    
@@ -332,11 +338,20 @@ To avoid a bias towards the majority class leading to poor performance, we used 
 The dice loss is defined by: 
 $$ DiceLoss(y, p) = 1 - (2 * (y * p) + 1) / (y + p + 1) $$
 
-○ (10pt) Contribution: ■ Why do you expect your approach to work better than what people have done before? What does your work contribute? • E.g., If you are building a new method on top of prior work, what component is new? If you are re-using methods on new application areas, clearly specify that no one has tried these approaches for this application. ○ (10pt) Intuition: ■ Explain why you expect your approach to work to solve the limitation of the literature described in your related work. 
-The main purpose of our project was to tackle current issues specified by previous Kelp detection algorithms such as  the potential interference of occasional clouds in the detection of kelp forests due to changes in reflectance and the high variability in the spatial patterns of kelp forests. We expect a UNet architecture to perform better because of its data efficiency requiring fewer training samples compared to other image segmentation algorithms. Also, the skip connection functionality of UNET enables the model to capture fine details and contextual information for precisely detecting kelp. Furthermore, UNET has been specifically designed for image segmentation purposes and thus allows accurate representation of kelp patches within the image. 
-We expected our approach to solve the limitations of the literature by using data augmentation during the training to enhance the model's robustness to cloud interference and spatial variability in kelp patterns. Our model would also be robust to variability due to the skip connections and multi-level mature extraction provided by the UNET. By learning from diverse examples, the model can accurately differentiate kelp and other elements, even in images with varying spatial patterns (including clouds).  
+##### Contribution:
+The main purpose of our project was to tackle current issues specified by previous Kelp detection algorithms such as  
+the potential interference of occasional clouds in the detection of kelp forests due to changes in reflectance and the 
+high variability in the spatial patterns of kelp forests. We expect a UNet architecture to perform better because of its
+data efficiency requiring fewer training samples compared to other image segmentation algorithms. Also, the skip connection
+functionality of UNET enables the model to capture fine details and contextual information for precisely detecting kelp. 
+Furthermore, UNET has been specifically designed for image segmentation purposes and thus allows accurate representation of kelp patches within the image. 
 
-○ (10pt) Visuals: ■ Provide a diagram that helps to explain your approach. This diagram could describe your approach pipeline, a key component you are introducing, or another visual that you feel helps best explain what you need to convey your approach.
+We expected our approach to solve the limitations of the literature by using data augmentation during the training to 
+enhance the model's robustness to cloud interference and spatial variability in kelp patterns. Our model would also be 
+robust to variability due to the skip connections and multi-level mature extraction provided by the UNET. By learning 
+from diverse examples, the model can accurately differentiate kelp and other elements, even in images with varying spatial patterns (including clouds).  
+
+##### Visuals:  Approach pipeline
 
 |![UNET diagram]()
 
