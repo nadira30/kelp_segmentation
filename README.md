@@ -1,8 +1,9 @@
-# Kelp Segmentation: Mapping and Monitoring of Kelp Forests
 ### Team Member: 
 * Nadira Amadou
 * Oluwatofunmi Sodimu 
 * Thanapol Tantagunninat
+
+This project is inspired by the following competition: [Kelp Wanted: Segmenting Kelp Forests](https://www.drivendata.org/competitions/255/kelp-forest-segmentation/data/)
 
 ### Introduction/Problem Definition:
 
