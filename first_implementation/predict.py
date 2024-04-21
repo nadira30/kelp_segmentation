@@ -1,8 +1,8 @@
 # get the validation data
 import torch
 
-import load_model
-from cnn_class import cnn_architecture
+from first_implementation import load_model
+from first_implementation.cnn_class import cnn_architecture
 
 val_data = load_model.val_data
 device = "cuda" if torch.cuda.is_available() else "cpu"

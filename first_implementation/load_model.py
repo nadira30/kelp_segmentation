@@ -1,10 +1,7 @@
-from math import floor
-
 import torch
 import torch.nn as nn
 import numpy as np
 import matplotlib.pyplot as plt
-import torchvision
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.preprocessing import minmax_scale
 
@@ -12,7 +9,7 @@ from torch.utils.data import Dataset, random_split, DataLoader
 import os
 from tifffile import imread
 
-from cnn_class import cnn_architecture
+from first_implementation.cnn_class import cnn_architecture
 
 
 class CustomImageDataset(Dataset):
@@ -134,7 +131,7 @@ def test_model(model, dataloader, loss_fn):
 
 
 # Load the datset (split into train and test)
-collected_data = CustomImageDataset('/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/train_satellite', '/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/train_kelp')
+collected_data = CustomImageDataset('/data/train_satellite', '/Users/nadira/gatech/Sp24/CV/kelp_segmentation/data/train_kelp')
 
 size = len(collected_data)
 train_size = int(0.8 * size)
