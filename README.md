@@ -176,21 +176,21 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 
 --------------------------------------------------------------------------
 We arrived at the approach discussed in the Methods section through the following experiments:
-Model Architecture: We experimented with different neural networks for semantic segmentation. 
-Model Parameters: We experimented with different loss functions e.g. binary cross-entropy and our custom dice_loss function to train our neural network. We also tried out different values for the learning rate, optimizer, model depth, etc.
-Data Preprocessing: We experimented with different data pre-processing methods such as the use of the Normalized Difference Water Index (NDWI) or the Normalized Difference Vegetation Index (NDVI) parameters which are both used for determining the presence/absence of vegetation. The most appropriate data pre-processing techniques will be chosen based on the accuracy values recorded when the processed data is used to train our model.
+- Model Architecture: We experimented with different neural networks for semantic segmentation.
+- Model Parameters: We experimented with different loss functions e.g. binary cross-entropy and our custom dice_loss function to train our neural network. We also tried out different values for the learning rate, optimizer, model depth, etc.
+- Data Preprocessing: We experimented with different data pre-processing methods such as the use of the Normalized Difference Water Index (NDWI) or the Normalized Difference Vegetation Index (NDVI) parameters which are both used for determining the presence/absence of vegetation. The most appropriate data pre-processing techniques will be chosen based on the accuracy values recorded when the processed data is used to train our model.
 
 By optimizing the model architecture and parameters, as well as the data preprocessing methods, we should arrive at a model that accurately maps kelp in satellite images.
 
 To implement our method for kelp segmentation of satellite images, we made use of the dataset from the ‘Kelp Wanted: Segmenting Kelp Forests’ competition on the driven data website [10]. The training set includes 5,635 TIFF images/label pairs, and the test set includes 1,426 TIFF images. Each image/label has a size of 350x350 pixels, with the input image having 7 channels and the label having 1 channel (binary mask of kelp or no kelp). The 7 channels of the input image are described below. 
 
-Short-Wave Infrared (SWIR): The SWIR band is highly useful for differentiating between water and land. Water bodies absorb more SWIR light, appearing darker, which can help distinguish kelp, which might reflect slightly more SWIR than plain open water.
+- Short-Wave Infrared (SWIR): The SWIR band is highly useful for differentiating between water and land. Water bodies absorb more SWIR light, appearing darker, which can help distinguish kelp, which might reflect slightly more SWIR than plain open water.
 Near-Infrared (NIR): NIR is generally absorbed by water but reflected by vegetation. Kelp forests will likely show higher reflectance in this band compared to the surrounding water, making NIR a critical channel for identifying aquatic vegetation.
- Red (R): The red band is absorbed by chlorophyll in healthy vegetation, making it less reflective in vegetation-rich areas but more reflective in areas without vegetation. However, underwater, the red light is absorbed quickly, which might reduce its utility unless the water is very shallow.
- Green (G): This band might be helpful in mapping shallow underwater habitats since it can penetrate deeper than the red channel. The green color also gets absorbed by the natural green color of the kelp.
-Blue (B): Blue light penetrates deeper into the water than other visible wavelengths, which can help in identifying deeper kelp forests.
-Cloud Mask: The cloud mask is useful for preprocessing to eliminate areas obscured by clouds from your analysis, ensuring that only clear observations of the water and kelp are considered.
-Elevation: An elevation map (ground mask) serves as a ground mask by identifying land areas. We can utilize this map to exclude these land areas from the regions considered for kelp presence, ensuring more accurate prediction results.
+- Red (R): The red band is absorbed by chlorophyll in healthy vegetation, making it less reflective in vegetation-rich areas but more reflective in areas without vegetation. However, underwater, the red light is absorbed quickly, which might reduce its utility unless the water is very shallow.
+- Green (G): This band might be helpful in mapping shallow underwater habitats since it can penetrate deeper than the red channel. The green color also gets absorbed by the natural green color of the kelp.
+- Blue (B): Blue light penetrates deeper into the water than other visible wavelengths, which can help in identifying deeper kelp forests.
+- Cloud Mask: The cloud mask is useful for preprocessing to eliminate areas obscured by clouds from your analysis, ensuring that only clear observations of the water and kelp are considered.
+- Elevation: An elevation map (ground mask) serves as a ground mask by identifying land areas. We can utilize this map to exclude these land areas from the regions considered for kelp presence, ensuring more accurate prediction results.
 
 Due to the unavailability of the ground truth labels for the test set, we split the training set by a ratio of 70-15-15 for training, validating, and testing our model. Sample images of the RGB channels, NIR, SWIR, Cloud Mask, Elevation map, and label are shown below:
 
