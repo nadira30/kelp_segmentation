@@ -58,17 +58,6 @@ Please cite works following IEEE guidelines.
 your work fill this hole?
 --------------------------------------------------------------------------
 
-#### [3] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas):
-- The paper evaluates two methods to automate kelp detection from satellite imagery: 1) crowdsourced classifications from the Floating Forests citizen science project (FF8), and 2) an automated spectral approach using a decision tree combined with multiple endmember spectral mixture analysis (DTM).
-- Both methods were applied to classify kelp from Landsat 5, 7, 8 imagery covering the Falkland Islands from 1985-2021.
-- DTM showed better performance than FF8 when validated against expert manual classifications of 8 Landsat scenes covering over 2,700 km of coastline.
-- Multiple Endmember Spectral Mixture Analysis (MESMA) is a spectral unmixing algorithm that estimates the fractional contributions of pure spectral endmembers (e.g. water, kelp, glint) to each image pixel spectrum based on a linear mixing model. It allows estimating partial kelp coverage within pixels.
-- Decision Tree Classification is used to first identify potential candidate kelp-containing pixels before applying MESMA. The decision tree uses spectral rules to separate kelp from non-kelp pixels. Then MESMA spectral unmixing is utilized to estimate fractional kelp coverage within those candidate pixels
-  
-![results_remote_sensing](https://github.com/nadira30/kelp_segmentation/assets/128086407/bd4350ca-dd28-45f5-9a77-abd99fae646c)
-|:--:| 
-| Image Showing the results of automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) |
-
 ### [9] Artificial intelligence convolutional neural networks map giant kelp forests from satellite imagery
 The paper suggests the use of a Mask R-CNN (mask region-based convolutional neural network) to detect giant kelp forests 
 along the coastlines of Southern California and Baja California using satellite imagery. The authors aimed to develop a 
