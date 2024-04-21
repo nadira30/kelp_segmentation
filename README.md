@@ -173,7 +173,6 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 --------------------------------------------------------------------------
 ### Experimental setup: 
 
-
 ----------------------------------------------------------------
 ### Results
 
@@ -190,7 +189,9 @@ The baseline results that we’re going to compare to our results is from the [3
 | *Image Showing the results from the paper: Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) * |
 
 Additionally, the table containing the input channel combination and quantitative results (mIOU + Dice) are shown in the table below:
+
 *************************insert results table********************************
+
 Here are some thought processes, insights, and conclusions from the experiment:
 
 1. Initial Approach: We began by feeding the model basic visual RGB inputs, akin to what the human eye perceives. However, the results were suboptimal, indicating the need for more sophisticated satellite image data.
@@ -201,17 +202,18 @@ Here are some thought processes, insights, and conclusions from the experiment:
 6. Project Milestones and Future Directions: Achieving a Dice coefficient above 0.5 marks a project's success within our current scope and timeline. However, while promising, the accuracy level is not yet sufficient for real-world application. Further refinement and development are required to enhance the model's reliability and applicability.
 
 Key Result Performance for Model:Since this project is concerned with semantic segmentation, we determined that a UNet architecture would be appropriate because it can be adapted to multi-channel images of different shapes and it has a contractive and expansive network that helps us classify and locate kelp in the images. Multiple variations of the UNet architecture were tried, one of which is UNet with a ResNet50 encoder. Ideally, the use of the ResNet50 encoder should improve the feature extraction capabilities of the model. We also experimented with an ensemble of detectors (UNet model and ResNet50 model modified for semantic segmentation). The dice coefficient values of each of these architectures when trained/tested on input data with NDVI+NDWI+NIR channels can be seen below:
-UNet with a ResNet50 encoder - 0.432
-Ensemble of UNet and ResNet50 - 0.48
-UNet - 0.52
+- UNet with a ResNet34encoder - 0.432
+- Ensemble of UNet and ResNet50 - 0.48
+- UNet - 0.52
+- 
 Of these three models, the UNet model described in our Methods section performed best based on our evaluation metrics. The under-performance of the ensemble and ResNet50+UNet models may be attributed to inadequately tuned parameters.
 
 
 Key Result Performance for Model Parameters: The dice coefficient values of the different learning rates and  loss functions tried when trained/tested on input data with NDVI+NDWI+NIR channels can be seen below:
 Loss function: The dice loss was chosen over the binary cross entropy loss due to its performance.
-Dice Loss - 0.52
-Binary Cross Entropy - 0.45
-Learning rate: A learning rate of 5e-3 was chosen over 1e-3 due to its performance.
+- Dice Loss - 0.52
+- Binary Cross Entropy - 0.45
+- Learning rate: A learning rate of 5e-3 was chosen over 1e-3 due to its performance.
 1e-3 - 0.485
 5e-3 - 0.52
 
