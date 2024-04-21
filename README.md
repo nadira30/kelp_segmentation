@@ -31,6 +31,10 @@ To address these pressing conservation concerns and safeguard the future of kelp
 |:--:| 
 | *Image Showing the change in Kelp forest abundance from 2008 to 2019* |
 
+We aim to develop a segmentation model based of a Convolutional Neural Network (CNN). The input to our model are the satellite images of 350x350 pixels containing 7 channels. The output/results is the predicted labels which represents the area where it contains kelp (1) or no kelp(1).
+
+The goal is to successfully match generate the predicted kelp labels on the 
+
 ### Related Works: 
 
 --------------------------------------------------------------------------
