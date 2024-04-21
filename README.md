@@ -176,8 +176,7 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 
 ##### Visuals:  Approach pipeline
 
-|![UNET diagram[9]]()
-
+|![UNET diagram[9]](https://raw.githubusercontent.com/nadira30/kelp_segmentation/main/Unet_diagram.jpeg)
 
 --------------------------------------------------------------------------
 ### Experimental setup
