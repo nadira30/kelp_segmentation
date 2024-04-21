@@ -159,7 +159,7 @@ Finally, the model then performs a couple of transformation operations before ap
 To avoid a bias towards the majority class leading to poor performance, we used a dice loss function to maximize the dice coefficient by measuring the overlap between the predicted(p) and ground truth image mask(y). 
 The dice loss is defined by: 
 
-$$ DiceLoss(y, p) = \frac {1 - (2 * (y * p) + 1)}{(y + p + 1)} $$
+$ DiceLoss(y, p) = \frac {1 - (2 * (y * p) + 1)}{(y + p + 1)} $
 
 ##### Contribution:
 The main purpose of our project was to tackle current issues specified by previous Kelp detection algorithms such as  
