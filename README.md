@@ -201,21 +201,25 @@ Here are some thought processes, insights, and conclusions from the experiment:
 5. Channel Optimization: We found that incorporating both Green and Blue as fourth and fifth channels actually reduced model accuracy. Consequently, a four-channel input comprising NDVI, NDWI, NIR, and Blue yielded the best results, achieving a Dice coefficient of 0.536 and an mIOU of 0.993.
 6. Project Milestones and Future Directions: Achieving a Dice coefficient above 0.5 marks a project's success within our current scope and timeline. However, while promising, the accuracy level is not yet sufficient for real-world application. Further refinement and development are required to enhance the model's reliability and applicability.
 
-Key Result Performance for Model:Since this project is concerned with semantic segmentation, we determined that a UNet architecture would be appropriate because it can be adapted to multi-channel images of different shapes and it has a contractive and expansive network that helps us classify and locate kelp in the images. Multiple variations of the UNet architecture were tried, one of which is UNet with a ResNet50 encoder. Ideally, the use of the ResNet50 encoder should improve the feature extraction capabilities of the model. We also experimented with an ensemble of detectors (UNet model and ResNet50 model modified for semantic segmentation). The dice coefficient values of each of these architectures when trained/tested on input data with NDVI+NDWI+NIR channels can be seen below:
+##### Key Result Performance for Model:
+
+Since this project is concerned with semantic segmentation, we determined that a UNet architecture would be appropriate because it can be adapted to multi-channel images of different shapes and it has a contractive and expansive network that helps us classify and locate kelp in the images. Multiple variations of the UNet architecture were tried, one of which is UNet with a ResNet50 encoder. Ideally, the use of the ResNet50 encoder should improve the feature extraction capabilities of the model. We also experimented with an ensemble of detectors (UNet model and ResNet50 model modified for semantic segmentation). The dice coefficient values of each of these architectures when trained/tested on input data with NDVI+NDWI+NIR channels can be seen below:
 - UNet with a ResNet34encoder - 0.432
 - Ensemble of UNet and ResNet50 - 0.48
 - UNet - 0.52
-- 
+
 Of these three models, the UNet model described in our Methods section performed best based on our evaluation metrics. The under-performance of the ensemble and ResNet50+UNet models may be attributed to inadequately tuned parameters.
 
 
-Key Result Performance for Model Parameters: The dice coefficient values of the different learning rates and  loss functions tried when trained/tested on input data with NDVI+NDWI+NIR channels can be seen below:
+##### Key Result Performance for Model Parameters: 
+
+The dice coefficient values of the different learning rates and  loss functions tried when trained/tested on input data with NDVI+NDWI+NIR channels can be seen below:
 Loss function: The dice loss was chosen over the binary cross entropy loss due to its performance.
 - Dice Loss - 0.52
 - Binary Cross Entropy - 0.45
 - Learning rate: A learning rate of 5e-3 was chosen over 1e-3 due to its performance.
-1e-3 - 0.485
-5e-3 - 0.52
+  1e-3 - 0.485
+  5e-3 - 0.52
 
 
 
