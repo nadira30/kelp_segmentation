@@ -8,28 +8,31 @@
 
 A kelp forest is an ocean community made up of dense groupings of kelps. These forests typically serve as a source of food, shelter, and protection to a wide variety of marine life [1]. Moreover, the significance of kelp forests extends beyond their role as a biodiverse hotspot. They play a pivotal role in regulating marine environments and supporting human well-being. Kelps are renowned for their capacity to sequester carbon dioxide through photosynthesis, contributing significantly to carbon capture from human's daily life and carbon storage in the oceans [2]. Additionally, these underwater havens act as natural buffers against coastal erosion, mitigating the impacts of waves and currents on shorelines. Furthermore, kelp forests hold economic value, serving as crucial fishing grounds and tourist attractions in many coastal regions.
 
-However, these forests face threats from multitude of factors such as climate change, acidification, overfishing, and unsustainable harvesting practices [1]. 
+However, these forests face threats from multitude of factors such as climate change, acidification, overfishing, and unsustainable harvesting practices [1].
 
-| ![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/965b146e-3d3b-4394-955c-e50391a7ab1c) | 
-|:--:| 
-| *Image Showing Sardines Seeking Food and Shelter in a Kelp Forest [2]*|
+<figure align="center">
+  <img src="https://github.com/nadira30/kelp_segmentation/assets/35805326/965b146e-3d3b-4394-955c-e50391a7ab1c"/>
+  <figcaption> Image Showing Sardines Seeking Food and Shelter in a Kelp Forest [2] </figcaption>
+</figure>
 
-![kelpswir_oli_2019](https://github.com/nadira30/kelp_segmentation/assets/128086407/7d7aa4ab-a17f-45c3-815f-8f9814d8d7c5)
-|:--:| 
-| *Image Showing the change in Kelp forest abundance from 2008 to 2019 [3]* |
+<figure align="center">
+  <img src="https://github.com/nadira30/kelp_segmentation/assets/128086407/7d7aa4ab-a17f-45c3-815f-8f9814d8d7c5"/>
+  <figcaption> Image Showing the change in Kelp forest abundance from 2008 to 2019 [3] </figcaption>
+</figure>
 
 To address these pressing conservation concerns and safeguard the future of kelp forests, innovative approaches are needed. One promising strategy involves harnessing the power of technology to monitor and protect these vital marine habitats. By leveraging advances in remote sensing, computer vision, and machine learning, we propose the development of a comprehensive model capable of monitoring kelp forests using coastal satellite imagery. Such a model would enable tracking of changes in kelp abundance, empowering conservation efforts and informing sustainable management practices. The successful predictions and ongoing automated monitoring can empower authorities, policymakers, and marine conservation organizations to make informed decisions about actions necessary for the preservation of coastal ecosystems.
 
 We aim to develop a kelp segmentation model based on a Convolutional Neural Network (CNN). The input to our model is the satellite images of 350x350 pixels containing 7 channels including Short-wave Infrared (SWIR), Near Infrared (NIR), Red (R), Green(G), Blue (B), Cloud Mask, and Elevation (Ground Mask) of which we will experiment with different selections/combinations of channels as the input to the neural networks. The output/results are the predicted labels that represent the pixels containing kelp (1) or no kelp (0). The goal is to successfully match the predicted kelp labels with the ground truth label in the dataset we used to validate our performance with more than 0.5 Dice coefficient.
 
+<figure align="center">
+  <img src="https://github.com/nadira30/kelp_segmentation/assets/128086407/18671950-b74d-4559-8287-25e96f84c3c4"/>
+  <figcaption> Image Showing the 7 channels in the satellite imagery </figcaption>
+</figure>
 
-![7channel](https://github.com/nadira30/kelp_segmentation/assets/128086407/18671950-b74d-4559-8287-25e96f84c3c4)
-|:--:| 
-| *Image Showing the 7 channels in the satellite imagery* |
-
-![intro](https://github.com/nadira30/kelp_segmentation/assets/128086407/fbde29d7-669d-40ef-bad5-fe7fcd9cb0f0)
-|:--:| 
-| *Image Showing the Ground truth label of pixels containing kelp as the expected output* |
+<figure align="center">
+  <img src="https://github.com/nadira30/kelp_segmentation/assets/128086407/fbde29d7-669d-40ef-bad5-fe7fcd9cb0f0"/>
+  <figcaption> Image Showing the Ground truth label of pixels containing kelp as the expected output</figcaption>
+</figure>
 
 
 ### Related Works: 
@@ -64,10 +67,11 @@ in reflectance and the high variability in the spatial patterns of kelp forests.
 - DTM showed better performance than FF8 when validated against expert manual classifications of 8 Landsat scenes covering over 2,700 km of coastline.
 - Multiple Endmember Spectral Mixture Analysis (MESMA) is a spectral unmixing algorithm that estimates the fractional contributions of pure spectral endmembers (e.g. water, kelp, glint) to each image pixel spectrum based on a linear mixing model. It allows estimating partial kelp coverage within pixels.
 - Decision Tree Classification is used to first identify potential candidate kelp-containing pixels before applying MESMA. The decision tree uses spectral rules to separate kelp from non-kelp pixels. Then MESMA spectral unmixing is utilized to estimate fractional kelp coverage within those candidate pixels
-  
-![results_remote_sensing](https://github.com/nadira30/kelp_segmentation/assets/128086407/bd4350ca-dd28-45f5-9a77-abd99fae646c)
-|:--:| 
-| Image Showing the results of automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) [5]|
+ 
+<figure align="center">
+  <img src="https://github.com/nadira30/kelp_segmentation/assets/128086407/bd4350ca-dd28-45f5-9a77-abd99fae646c"/>
+  <figcaption> Image Showing the results of automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas)  [5] </figcaption>
+</figure>
 
 #### [6] Mapping bull kelp canopy in northern California using Landsat to enable long-term monitoring
 - This paper is focused on the mapping and monitoring of kelp, specifically bull kelp, though the use of Landsat satellite images.
@@ -154,6 +158,7 @@ The decoder part is responsible for taking the input tensor and a skip connectio
 Finally, the model then performs a couple of transformation operations before applying the convolution operation which is responsible for outputting a decoded feature map. 
 To avoid a bias towards the majority class leading to poor performance, we used a dice loss function to maximize the dice coefficient by measuring the overlap between the predicted(p) and ground truth image mask(y). 
 The dice loss is defined by: 
+
 $$ DiceLoss(y, p) = 1 - (2 * (y * p) + 1) / (y + p + 1) $$
 
 ##### Contribution:
@@ -173,7 +178,7 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 
 |![UNET diagram[9]]()
 
---------------------------------------------------------------------------
+
 --------------------------------------------------------------------------
 ### Experimental setup
 
@@ -345,6 +350,4 @@ Houskeeper HF, Rosenthal IS, Cavanaugh KC, Pawlak C, Trouille L, et al. (2022) A
 
 [11] GISGeography. (2024, March 10). What is NDVI (normalized difference vegetation index)?. GIS Geography. https://gisgeography.com/ndvi-normalized-difference-vegetation-index/ 
 
-[12] DrivenData. (n.d.). Kelp wanted: Segmenting kelp forests. https://www.drivendata.org/competitions/255/kelp-forest-segmentation/page/792/ 
-
-[13] U.S. Department of the Interior. (n.d.). Kelp forests. National Parks Service. https://www.nps.gov/glba/learn/nature/kelp-forest.htm#:~:text=Kelp%20might%20look%20like%20a,Kelp%20does%20not%20have%20roots. 
+[12] DrivenData. (n.d.). Kelp wanted: Segmenting kelp forests. https://www.drivendata.org/competitions/255/kelp-forest-segmentation/page/792/
