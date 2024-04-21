@@ -138,16 +138,22 @@ Elevation: An elevation map (ground mask) serves as a ground mask by identifying
 Due to the unavailability of the ground truth labels for the test set, we split the training set by a ratio of 70-15-15 for training, validating, and testing our model. Sample images of the RGB channels, NIR, SWIR, Cloud Mask, Elevation map, and label are shown below:
 
 |![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/06ec8f64-cd38-4568-83ef-b3c24c4f0d2c)|
+|:--:| 
 | SWIR Channel |
 |![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/4449d77b-cdeb-4d47-8d92-fa3670435d9a)|
+|:--:| 
 | NIR Channel |
 |![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/70aa5c40-e1b5-46b1-97ab-54430ce5a6f2)|
+|:--:| 
 | RGB Channels |
 |![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/774604e5-5993-48de-8d04-e128b86ef754)|
+|:--:| 
 | Cloud Mask |
 |![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/a475e6d9-a005-47fc-a80f-befb0078deb8)|
+|:--:| 
 | Elevation Map |
 ![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/c6149804-e47e-4f7b-9f7f-2fc7045f7175)|
+|:--:| 
 | Kelp Label |
 
 
