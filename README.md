@@ -205,9 +205,11 @@ Near-Infrared (NIR): NIR is generally absorbed by water but reflected by vegetat
 - Blue (B): Blue light penetrates deeper into the water than other visible wavelengths, which can help in identifying deeper kelp forests.
 - Cloud Mask: The cloud mask is useful for preprocessing to eliminate areas obscured by clouds from your analysis, ensuring that only clear observations of the water and kelp are considered.
 - Elevation: An elevation map (ground mask) serves as a ground mask by identifying land areas. We can utilize this map to exclude these land areas from the regions considered for kelp presence, ensuring more accurate prediction results.
+- NDVI (Normalized Difference Vegetation Index): NDVI is calculated using the formula: NDVI = (NIR−Red)/(NIR+Red) where NIR is the near-infrared light reflected by vegetation, and Red is the visible red light reflected by the vegetation. NDVI values range from -1 to +1, where higher values indicate greater levels of live green vegetation, making it essential for assessing plant health and biomass.
+- NDWI (Normalized Difference Water Index): NDWI is often calculated using one of two formulas depending on the specific application. NDWI = (Green−NIR)/(Green+NIR) where Green represents green light reflectance. This index helps differentiate water from terrestrial vegetation and is crucial for studies related to surface water mapping.
 
+ 
 Due to the unavailability of the ground truth labels for the test set, we split the training set by a ratio of 70-15-15 for training, validating, and testing our model. Sample images of the RGB channels, NIR, SWIR, Cloud Mask, Elevation map, and label are shown below:
-
 
 <figure align="center">
   <img src="https://github.com/nadira30/kelp_segmentation/assets/35805326/06ec8f64-cd38-4568-83ef-b3c24c4f0d2c"/>
