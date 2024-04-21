@@ -237,7 +237,7 @@ The example of visual output (qualitative) results are shown in the images below
 
 For the baseline results comparison, we will compare our results to the baseline established by the study "[5] Automated Satellite Remote Sensing of Giant Kelp at the Falkland Islands (Islas Malvinas)." This baseline indicates that the automated DTM algorithm performed nicely, producing labels closely aligned with the ground truth (expert-labeled). However, the automated KD algorithm did not perform as well, with its results significantly deviating from the expert labels.
 
-Upon quantitative evaluation, the DTM algorithm demonstrated performance that matched or surpassed our model. Both the DTM and our U-Net model exhibited minor variations in size and slight deviations from the ground truth, with occasional over-labeling or under-labeling. In contrast, the KD algorithm significantly underperformed when compared to our model, often failing to sufficiently mark the kelp on the satellite images.
+Upon quantitative evaluation, the DTM algorithm demonstrated performance that matched or surpassed our model. Both the DTM and our U-Net model exhibited minor variations in size and slight deviations from the ground truth, with occasional over-labeling or under-labeling. In contrast, the KD algorithm underperformed relative to the DTM and exhibited performance that was either comparable to or worse than our model, often failing to accurately identify kelp on the satellite images.
 
 ![results_isla_malvinas](https://github.com/nadira30/kelp_segmentation/assets/128086407/088cea68-42a2-4514-b067-7293c1f4467c)
 |:--:| 
