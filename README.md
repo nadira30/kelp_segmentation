@@ -292,6 +292,7 @@ Loss function: The dice loss was chosen over the binary cross entropy loss due t
   * 5e-3 - 0.52
 
 
+--------------------------------------------------------------------------
 ### Discussion
 --------------------------------------------------------------------------
 In summary, our project focused on the development of an approach for segmenting kelp in satellite images. We made use of UNet as our model architecture and the Normalized Difference Vegetation Index (NDVI), Normalized Difference Water Index (NDWI), Near Infrared channel (NIR), and Blue channel as our model input. With this approach, we attained a dice coefficient accuracy of 0.536. While this value indicates that the model can classify kelp a majority of the time, it is not satisfactory for real-world applications and does not outperform the approaches discussed in our related works section. 
