@@ -199,27 +199,52 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 ### Experiments / Results: 
 
 --------------------------------------------------------------------------
-Experiment Setup (20pt)
-○ (5pt) Experiment purpose
-■ Explain what experiments you’ve done
-■ Describe how (if successful) they demonstrate your approach solves your
-problem
-○ (5pt) Input description
-■ Show at least one example from your dataset.
-■ Mention relevant details like: How much data you have (i.e., number of
-images / videos)? What size are individual images/videos? Where did you
-get your data from (include citation if using a known dataset)? Does your
-data also provide labels needed for your approach? If so, what are the
-labels and how many are there?
-○ (5pt) Desired Output Description
-■ Make sure you clearly specify what the output should be from our
-system/approach for your experiment. Again, a visual example (if image
-output expected) or a label space specification (if predicting an output),
-can be very helpful here. Feel free to show a descriptive ground truth
-example for this.
-○ (5pt) Metric for success
-■ e.g., accuracy for classification, mIoU for segmentation) – if non-standard
-define this metric
+### Experiments / Results: 
+
+--------------------------------------------------------------------------
+We arrived at the approach discussed in the Methods section through the following experiments:
+Model Architecture: We experimented with different neural networks for semantic segmentation. 
+Model Parameters: We experimented with different loss functions e.g. binary cross-entropy and our custom dice_loss function to train our neural network. We also tried out different values for the learning rate, optimizer, model depth, etc.
+Data Preprocessing: We experimented with different data pre-processing methods such as the use of the Normalized Difference Water Index (NDWI) or the Normalized Difference Vegetation Index (NDVI) parameters which are both used for determining the presence/absence of vegetation. The most appropriate data pre-processing techniques will be chosen based on the accuracy values recorded when the processed data is used to train our model.
+
+By optimizing the model architecture and parameters, as well as the data preprocessing methods, we should arrive at a model that accurately maps kelp in satellite images.
+
+To implement our method for kelp segmentation of satellite images, we made use of the dataset from the ‘Kelp Wanted: Segmenting Kelp Forests’ competition on the driven data website [10]. The training set includes 5,635 TIFF images/label pairs, and the test set includes 1,426 TIFF images. Each image/label has a size of 350x350 pixels, with the input image having 7 channels and the label having 1 channel (binary mask of kelp or no kelp). The 7 channels of the input image are described below. 
+
+Short-Wave Infrared (SWIR): The SWIR band is highly useful for differentiating between water and land. Water bodies absorb more SWIR light, appearing darker, which can help distinguish kelp, which might reflect slightly more SWIR than plain open water.
+Near-Infrared (NIR): NIR is generally absorbed by water but reflected by vegetation. Kelp forests will likely show higher reflectance in this band compared to the surrounding water, making NIR a critical channel for identifying aquatic vegetation.
+ Red (R): The red band is absorbed by chlorophyll in healthy vegetation, making it less reflective in vegetation-rich areas but more reflective in areas without vegetation. However, underwater, the red light is absorbed quickly, which might reduce its utility unless the water is very shallow.
+ Green (G): This band might be helpful in mapping shallow underwater habitats since it can penetrate deeper than the red channel. The green color also gets absorbed by the natural green color of the kelp.
+Blue (B): Blue light penetrates deeper into the water than other visible wavelengths, which can help in identifying deeper kelp forests.
+Cloud Mask: The cloud mask is useful for preprocessing to eliminate areas obscured by clouds from your analysis, ensuring that only clear observations of the water and kelp are considered.
+Elevation: An elevation map (ground mask) serves as a ground mask by identifying land areas. We can utilize this map to exclude these land areas from the regions considered for kelp presence, ensuring more accurate prediction results.
+
+Due to the unavailability of the ground truth labels for the test set, we split the training set by a ratio of 70-15-15 for training, validating, and testing our model. Sample images of the RGB channels, NIR, SWIR, Cloud Mask, Elevation map, and label are shown below:
+
+|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/06ec8f64-cd38-4568-83ef-b3c24c4f0d2c)|
+|:--:| 
+| SWIR Channel |
+|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/4449d77b-cdeb-4d47-8d92-fa3670435d9a)|
+|:--:| 
+| NIR Channel |
+|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/70aa5c40-e1b5-46b1-97ab-54430ce5a6f2)|
+|:--:| 
+| RGB Channels |
+|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/774604e5-5993-48de-8d04-e128b86ef754)|
+|:--:| 
+| Cloud Mask |
+|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/a475e6d9-a005-47fc-a80f-befb0078deb8)|
+|:--:| 
+| Elevation Map |
+![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/c6149804-e47e-4f7b-9f7f-2fc7045f7175)|
+|:--:| 
+| Kelp Label |
+
+
+The desired output of our model is a binary mask/image with 0 representing the absence of kelp and 1 representing the presence of kelp. A sample output can be seen in the picture titled ‘Kelp Label’.
+
+For evaluating our approach, we made use of the dice coefficient and mean Intersection over Union metrics as these work well with highly class imbalanced datasets as is common in semantic segmentation tasks.
+
 
 Results (35pt)
 ○ (10pt) Baselines
