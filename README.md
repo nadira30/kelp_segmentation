@@ -140,7 +140,7 @@ Table [1] shows the architecture of the model.
 | conv2d_6 (Conv2D)                           | (None, 70, 70, 320)      | 1843520                       | ['concatenate[0][0]']                         
 | batch_normalization_6 (BatchNormalization)  | (None, 70, 70, 320)      | 128| 0                                             |['conv2d_6[0][0]']
 | re_lu_6 (ReLU)                              | (None, 70, 70, 320) |  0                            | ['batch_normalization_6[0][0]']               
-| conv2d_7 (Conv2D)                           | (None, 70, 70, 320)      | 921920      ['re_lu_6[0][0]'] 
+| conv2d_7 (Conv2D)                           | (None, 70, 70, 320)      | 921920      |['re_lu_6[0][0]'] 
 | batch_normalization_7 (BatchNormalization)  | (None, 70, 70, 320)      | 128| 0                                             | ['conv2d_7[0][0]']                            
 | re_lu_7 (ReLU)                              | (None, 70, 70, 320)      | 0                             | ['batch_normalization_7[0][0]']               
 | conv2d_transpose_1 (Conv2DTranspose))       | (None, 350, 350, 64      | 512064                        | ['re_lu_7[0][0]']                             
