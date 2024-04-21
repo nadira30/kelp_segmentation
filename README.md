@@ -5,17 +5,6 @@
 * Thanapol Tantagunninat
 
 ### Introduction/Problem Definition:
----------------------------------------------------------------------
-Introduction (30pt):
-○ (10pt) High Level Description and Motivation: What is your high-level topic
-area? Why should people care about this project? If you succeed, what benefit
-will you provide and to whom?
-○ (10pt) Specific Problem Definition: What precise problem are you tackling? What
-is the desired goal? What is the expected input and output?
-○ (10pt) Visuals: Include at least one diagram/visual to help describe your problem
-statement and/or goal. This can be an example input/output, an example of current
-failures of existing methods, or a diagram explaining your motivation
--------------------------------------------------------------------------
 
 A kelp forest is an ocean community made up of dense groupings of kelps. These forests typically serve as a source of food, shelter, and protection to a wide variety of marine life [1]. Moreover, the significance of kelp forests extends beyond their role as a biodiverse hotspot. They play a pivotal role in regulating marine environments and supporting human well-being. Kelps are renowned for their capacity to sequester carbon dioxide through photosynthesis, contributing significantly to carbon capture from human's daily life and carbon storage in the oceans [2]. Additionally, these underwater havens act as natural buffers against coastal erosion, mitigating the impacts of waves and currents on shorelines. Furthermore, kelp forests hold economic value, serving as crucial fishing grounds and tourist attractions in many coastal regions.
 
@@ -31,7 +20,7 @@ However, these forests face threats from multitude of factors such as climate ch
 
 To address these pressing conservation concerns and safeguard the future of kelp forests, innovative approaches are needed. One promising strategy involves harnessing the power of technology to monitor and protect these vital marine habitats. By leveraging advances in remote sensing, computer vision, and machine learning, we propose the development of a comprehensive model capable of monitoring kelp forests using coastal satellite imagery. Such a model would enable tracking of changes in kelp abundance, empowering conservation efforts and informing sustainable management practices. The successful predictions and ongoing automated monitoring can empower authorities, policymakers, and marine conservation organizations to make informed decisions about actions necessary for the preservation of coastal ecosystems.
 
-We aim to develop a kelp segmentation model based on a Convolutional Neural Network (CNN). The input to our model is the satellite images of 350x350 pixels containing 7 channels including Short-wave Infrared (SWIR), Near Infrared (NIR), Red (R), Green(G), Blue (B), Cloud Mask, and Elevation (Ground Mask) of which we will experiment with different selections/combinations of channels as the input to the neural networks. The output/results are the predicted labels that represent the pixels containing kelp (1) or no kelp (0). The goal is to successfully match the predicted kelp labels with the ground truth label in the dataset we used to validate our performance with more than 50% accuracy (mIOU and Dice coefficient).
+We aim to develop a kelp segmentation model based on a Convolutional Neural Network (CNN). The input to our model is the satellite images of 350x350 pixels containing 7 channels including Short-wave Infrared (SWIR), Near Infrared (NIR), Red (R), Green(G), Blue (B), Cloud Mask, and Elevation (Ground Mask) of which we will experiment with different selections/combinations of channels as the input to the neural networks. The output/results are the predicted labels that represent the pixels containing kelp (1) or no kelp (0). The goal is to successfully match the predicted kelp labels with the ground truth label in the dataset we used to validate our performance with more than 0.5 Dice coefficient.
 
 
 ![7channel](https://github.com/nadira30/kelp_segmentation/assets/128086407/18671950-b74d-4559-8287-25e96f84c3c4)
@@ -44,20 +33,6 @@ We aim to develop a kelp segmentation model based on a Convolutional Neural Netw
 
 
 ### Related Works: 
-
---------------------------------------------------------------------------
-Related Work (30pt):
-○ (20pt) Explaining Context: Clearly state what other people have done before to
-solve your specific problem. If your project brings together multiple areas, you
-will need to describe each area and what people have done in each.
-■ Provides citations of the five most relevant references to your work.
-Please cite works following IEEE guidelines.
-■ For each citation, provides a short (2-6 sentence) explanation as to
-• Why this work is relevant to your project.
-• What this work contributed to the field.
-○ (10pt) Your project in context: What was missing in prior work and how does
-your work fill this hole?
---------------------------------------------------------------------------
 
 ### [9] Artificial intelligence convolutional neural networks map giant kelp forests from satellite imagery
 The paper suggests the use of a Mask R-CNN (mask region-based convolutional neural network) to detect giant kelp forests 
@@ -196,72 +171,53 @@ from diverse examples, the model can accurately differentiate kelp and other ele
 |![UNET diagram]()
 
 --------------------------------------------------------------------------
-### Experiments / Results: 
+### Experimental setup: 
 
---------------------------------------------------------------------------
-### Experiments / Results: 
 
---------------------------------------------------------------------------
-We arrived at the approach discussed in the Methods section through the following experiments:
-Model Architecture: We experimented with different neural networks for semantic segmentation. 
-Model Parameters: We experimented with different loss functions e.g. binary cross-entropy and our custom dice_loss function to train our neural network. We also tried out different values for the learning rate, optimizer, model depth, etc.
-Data Preprocessing: We experimented with different data pre-processing methods such as the use of the Normalized Difference Water Index (NDWI) or the Normalized Difference Vegetation Index (NDVI) parameters which are both used for determining the presence/absence of vegetation. The most appropriate data pre-processing techniques will be chosen based on the accuracy values recorded when the processed data is used to train our model.
+----------------------------------------------------------------
+### Results
 
-By optimizing the model architecture and parameters, as well as the data preprocessing methods, we should arrive at a model that accurately maps kelp in satellite images.
-
-To implement our method for kelp segmentation of satellite images, we made use of the dataset from the ‘Kelp Wanted: Segmenting Kelp Forests’ competition on the driven data website [10]. The training set includes 5,635 TIFF images/label pairs, and the test set includes 1,426 TIFF images. Each image/label has a size of 350x350 pixels, with the input image having 7 channels and the label having 1 channel (binary mask of kelp or no kelp). The 7 channels of the input image are described below. 
-
-Short-Wave Infrared (SWIR): The SWIR band is highly useful for differentiating between water and land. Water bodies absorb more SWIR light, appearing darker, which can help distinguish kelp, which might reflect slightly more SWIR than plain open water.
-Near-Infrared (NIR): NIR is generally absorbed by water but reflected by vegetation. Kelp forests will likely show higher reflectance in this band compared to the surrounding water, making NIR a critical channel for identifying aquatic vegetation.
- Red (R): The red band is absorbed by chlorophyll in healthy vegetation, making it less reflective in vegetation-rich areas but more reflective in areas without vegetation. However, underwater, the red light is absorbed quickly, which might reduce its utility unless the water is very shallow.
- Green (G): This band might be helpful in mapping shallow underwater habitats since it can penetrate deeper than the red channel. The green color also gets absorbed by the natural green color of the kelp.
-Blue (B): Blue light penetrates deeper into the water than other visible wavelengths, which can help in identifying deeper kelp forests.
-Cloud Mask: The cloud mask is useful for preprocessing to eliminate areas obscured by clouds from your analysis, ensuring that only clear observations of the water and kelp are considered.
-Elevation: An elevation map (ground mask) serves as a ground mask by identifying land areas. We can utilize this map to exclude these land areas from the regions considered for kelp presence, ensuring more accurate prediction results.
-
-Due to the unavailability of the ground truth labels for the test set, we split the training set by a ratio of 70-15-15 for training, validating, and testing our model. Sample images of the RGB channels, NIR, SWIR, Cloud Mask, Elevation map, and label are shown below:
-
-|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/06ec8f64-cd38-4568-83ef-b3c24c4f0d2c)|
+The example of visual output (qualitative) results are shown in the images below:
+![summary](https://github.com/nadira30/kelp_segmentation/assets/128086407/bdb95e97-6d7a-4954-8e2d-f3e5212bd39c)
 |:--:| 
-| SWIR Channel |
-|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/4449d77b-cdeb-4d47-8d92-fa3670435d9a)|
-|:--:| 
-| NIR Channel |
-|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/70aa5c40-e1b5-46b1-97ab-54430ce5a6f2)|
-|:--:| 
-| RGB Channels |
-|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/774604e5-5993-48de-8d04-e128b86ef754)|
-|:--:| 
-| Cloud Mask |
-|![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/a475e6d9-a005-47fc-a80f-befb0078deb8)|
-|:--:| 
-| Elevation Map |
-![image](https://github.com/nadira30/kelp_segmentation/assets/35805326/c6149804-e47e-4f7b-9f7f-2fc7045f7175)|
-|:--:| 
-| Kelp Label |
+| *Image Showing the example image – ground truth - predicted* |
 
 
-The desired output of our model is a binary mask/image with 0 representing the absence of kelp and 1 representing the presence of kelp. A sample output can be seen in the picture titled ‘Kelp Label’.
+The baseline results that we’re going to compare to our results is from the [3] Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) 
 
-For evaluating our approach, we made use of the dice coefficient and mean Intersection over Union metrics as these work well with highly class imbalanced datasets as is common in semantic segmentation tasks.
+![results_isla_malvinas](https://github.com/nadira30/kelp_segmentation/assets/128086407/088cea68-42a2-4514-b067-7293c1f4467c)
+|:--:| 
+| *Image Showing the results from the paper: Automated satellite remote sensing of giant kelp at the Falkland Islands (Islas Malvinas) * |
+
+Additionally, the table containing the input channel combination and quantitative results (mIOU + Dice) are shown in the table below:
+*************************insert results table********************************
+Here are some thought processes, insights, and conclusions from the experiment:
+
+1. Initial Approach: We began by feeding the model basic visual RGB inputs, akin to what the human eye perceives. However, the results were suboptimal, indicating the need for more sophisticated satellite image data.
+2. Importance of NIR: Through research and practical observation, we identified the Near-Infrared (NIR) channel as crucial due to its high sensitivity to vegetation. NIR images provided clear and useful visual data, underscoring its significance.
+3. Inclusion of NDVI and NDWI: Implementing the Normalized Difference Vegetation Index (NDVI) and the Normalized Difference Water Index (NDWI) significantly enhanced prediction accuracy. Their effectiveness is well-documented in remote sensing, agriculture, and forestry, which we confirmed through our tests.
+4. Optimal Channel Configuration: The most effective input configuration at the time involved three channels: NDVI, NDWI, and NIR. The addition of a fourth channel, either Green or Blue, further improved the Dice coefficient, with Blue outperforming Green. This suggests that the Blue channel may better capture deeper, less visible kelp, possibly due to its penetration capabilities beyond what the Green channel can achieve.
+5. Channel Optimization: We found that incorporating both Green and Blue as fourth and fifth channels actually reduced model accuracy. Consequently, a four-channel input comprising NDVI, NDWI, NIR, and Blue yielded the best results, achieving a Dice coefficient of 0.536 and an mIOU of 0.993.
+6. Project Milestones and Future Directions: Achieving a Dice coefficient above 0.5 marks a project's success within our current scope and timeline. However, while promising, the accuracy level is not yet sufficient for real-world application. Further refinement and development are required to enhance the model's reliability and applicability.
+
+Key Result Performance for Model:Since this project is concerned with semantic segmentation, we determined that a UNet architecture would be appropriate because it can be adapted to multi-channel images of different shapes and it has a contractive and expansive network that helps us classify and locate kelp in the images. Multiple variations of the UNet architecture were tried, one of which is UNet with a ResNet50 encoder. Ideally, the use of the ResNet50 encoder should improve the feature extraction capabilities of the model. We also experimented with an ensemble of detectors (UNet model and ResNet50 model modified for semantic segmentation). The dice coefficient values of each of these architectures when trained/tested on input data with NDVI+NDWI+NIR channels can be seen below:
+UNet with a ResNet50 encoder - 0.432
+Ensemble of UNet and ResNet50 - 0.48
+UNet - 0.52
+Of these three models, the UNet model described in our Methods section performed best based on our evaluation metrics. The under-performance of the ensemble and ResNet50+UNet models may be attributed to inadequately tuned parameters.
 
 
-Results (35pt)
-○ (10pt) Baselines
-■ How do prior works perform on this task? It’s best to have a quantitative
-comparison using your metric for success. If that is not possible, a
-qualitative result will suffice.
-■ You are required to have at least one comparison.
-○ (10pt) Key result presentation
-■ Clearly present your key result. This should include both your
-performance according to your metric of success defined above and a
-qualitative output example from your system.
-○ (15pt) Key result performance
-■ Specify what variants of your approach you tried to make progress
-towards finding a solution.
-■ Ultimately, describe your final results. Did your approach work? If not,
-explain why you believe it did not.
---------------------------------------------------------------------------
+Key Result Performance for Model Parameters: The dice coefficient values of the different learning rates and  loss functions tried when trained/tested on input data with NDVI+NDWI+NIR channels can be seen below:
+Loss function: The dice loss was chosen over the binary cross entropy loss due to its performance.
+Dice Loss - 0.52
+Binary Cross Entropy - 0.45
+Learning rate: A learning rate of 5e-3 was chosen over 1e-3 due to its performance.
+1e-3 - 0.485
+5e-3 - 0.52
+
+
+
+
 
 ### Discussion
 --------------------------------------------------------------------------
