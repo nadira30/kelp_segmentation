@@ -294,11 +294,25 @@ Loss function: The dice loss was chosen over the binary cross entropy loss due t
 
 ### Discussion
 --------------------------------------------------------------------------
-Discussion (15pt)
-○ Provide a reflective paragraph about your project. Summarize what you
-accomplished, what you learned, and what remains for future works.
-○ If you were to start over today, is that a different strategy you would take to make
-progress on your overall problem statement?
+In summary, our project focused on the development of an approach for segmenting kelp in satellite images. We made use of UNet as our model architecture and the Normalized Difference Vegetation Index (NDVI), Normalized Difference Water Index (NDWI), Near Infrared channel (NIR), and Blue channel as our model input. With this approach, we attained a dice coefficient accuracy of 0.536. While this value indicates that the model can classify kelp a majority of the time, it is not satisfactory for real-world applications and does not outperform the approaches discussed in our related works section. 
+
+Through this project, we have learned the following:
+* The default accuracy metric in Scikit- learn may not be appropriate for semantic segmentation tasks and will likely give an inflated accuracy value as it does not penalize false positives.
+* Properly tuned parameters can significantly improve the performance of your neural network.
+* Data preprocessing such as utilizing the cloud and ground channels, along with combining different hyperspectral data can also significantly improve the performance of the neural network as can be seen from the results of our experiment.
+* Scientific knowledge in remote sensing. We learned the benefits of each satellite image channel and how to utilize them for the analysis of the hyperspectral image for environmental monitoring.
+
+Additionally, we have also learnt how to build and combine layers of networks to perform semantic segmentation. If we were to start over today, we would increase the complexity of our model so that it learns more from the input data. We would also consider starting the training step earlier so that we could explore more computationally demanding models and have enough time to run them. We would also invest more time in the initial phases of the project to manually detect and correct/remove data corruption in satellite images or develop algorithms to detect them automatically. 
+
+For future work, we can explore these options:
+
+* Implement manual or automated techniques to identify and remove corrupted satellite images, which are detrimental to model performance.
+* Experiment with more complex versions of the U-Net architecture to enhance the model's capability to segment kelp accurately.
+* Employ a broader range of data augmentation techniques, such as flipping, random scaling, elastic deformations, and random rotations. These methods can help generalize the model better and reduce overfitting by simulating a variety of imaging conditions.
+* Explore options for automating hyperparameter tuning to systematically improve model performance. 
+* Deploy the model in real-world settings to evaluate its practical effectiveness and reliability. Recording and analyzing the results from actual field tests will provide valuable insights that can be used to further refine the model.
+
+
 --------------------------------------------------------------------------
   
 ### Challenges Encountered
